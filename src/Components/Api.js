@@ -18,7 +18,7 @@ function Api() {
   });
   return (
     <div>
-      <h1>THis is an api call</h1>
+      {/* <h1>THis is an api call</h1> */}
     </div>
   );
 }
