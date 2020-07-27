@@ -1,30 +1,74 @@
+
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
+import MyLocationIcon from '@material-ui/icons/MyLocation';
 import './SearchBar.css';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import { Button } from '@material-ui/core';
 
-function SearchBar() {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: '2px 4px',
+    // marginTop:'20px',
+    display: 'flex',
+    alignItems: 'center',
+    width: 185,
+    justifyContent: 'center',
+  },
+  root1: {
+    padding: '2px 4px',
+    // marginTop:'20px',
+    display: 'flex',
+    alignItems: 'center',
+    width: 345,
+    justifyContent: 'center',
+  },
+  input: {
+    marginLeft: theme.spacing(2),
+    flex: 1,
+  },
+  iconButton: {
+    padding: 10,
+  },
+  divider: {
+    height: 28,
+    margin: 4,
+  },
+}));
 
+export default function SearchBar() {
+  const classes = useStyles();
 
-    return (
-        <div>
-            <div className="search-main">
-                <div className="search">
-                    <div className="search-loc">
-                        <LocationOnIcon />
-                        <input type="text" placeholder="Enter location" className="loc"></input>
-                    </div>
-                    <div className="vertical-bar"></div>
-                    <div className="search-res">
-                        <input type="text" placeholder="Search for restaurant, cuisine  or dish" className="res"></input>
-                    </div>
-                    <div className="searchicon">
-                        <SearchOutlinedIcon />
-                        <p>Search</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+  return (
+
+    <div className="searchbar">
+    <Paper component="form" className={classes.root}>
+      
+      <InputBase
+        className={classes.input}
+        placeholder="Enter location "
+        inputProps={{ 'aria-label': 'search google maps' }}
+      />
+      <IconButton className={classes.iconButton} aria-label="mylocation">
+        <MyLocationIcon/>
+      </IconButton>
+      
+    </Paper>
+    <Paper component="form" className={classes.root1}>
+      <InputBase
+        className={classes.input}
+        placeholder="Search for restaurant, cuisine or dish..."
+        inputProps={{ 'aria-label': 'search google maps' }}
+      />
+      <IconButton className={classes.iconButton} aria-label="search">
+        <SearchIcon/>
+      </IconButton>
+
+    </Paper>
+    <Button variant="contained" color="primary">Search</Button>
+    </div>
+  );
 }
-export default SearchBar;
