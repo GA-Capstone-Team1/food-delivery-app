@@ -1,14 +1,14 @@
 import React from "react";
-import "./App.css";
+
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
-import Api from "./Components/Api";
 import FiltersSideBar from "./Components/FiltersSideBar/FIltersSideBar";
+import Card from "./Components/Card";
 
 function App() {
   return (
     <div>
-      <Api></Api>
       <FiltersSideBar></FiltersSideBar>
+      <Card></Card>
       <Router>
         <Switch>
           <Route></Route>
