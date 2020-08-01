@@ -1,0 +1,43 @@
+.filterSideBarContainer {
+  background-color: #fcbf49;
+  width: fit-content;
+  padding: 15px;
+
+  .head {
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+
+  .filterType {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .filterName {
+    font-size: 16px;
+  }
+
+  .filterContainer {
+    margin: 5px 0px 10px 0;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .Checkbox {
+      margin: 0;
+      padding: 0;
+    }
+    .filterName {
+      cursor: pointer;
+    }
+    .filterName:hover {
+      color: red;
+    }
+    .filterName:active {
+      color: rebeccapurple;
+    }
+  }
+}
