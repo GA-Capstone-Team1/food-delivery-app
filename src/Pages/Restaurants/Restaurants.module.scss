@@ -1,0 +1,32 @@
+@import "../../SCSS/Mixins";
+
+.container {
+  @include Desktop() {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "sidebar  search"
+      "sidebar restaurants";
+  }
+}
+
+.searchbar {
+  @include Desktop() {
+    grid-area: search;
+  }
+}
+
+.FiltersSideBar {
+  @include Desktop() {
+    grid-area: sidebar;
+  }
+}
+
+.cards {
+  @include Desktop() {
+    grid-area: restaurants;
+  }
+}

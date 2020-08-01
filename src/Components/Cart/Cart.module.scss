@@ -1,0 +1,62 @@
+@import "../../SCSS/Mixins";
+
+.cart {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  @include Desktop() {
+    width: 30%;
+  }
+
+  .restaurant {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+.itemContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  .dish {
+    width: 60%;
+    justify-self: flex-start;
+  }
+
+  .price {
+    width: 20%;
+    justify-self: flex-end;
+    align-self: center;
+  }
+}
+
+.addRemoveContainer {
+  justify-self: center;
+  align-self: center;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid grey;
+  padding: 0;
+  margin: 0 10px;
+
+  .iconBtn {
+    margin: 0;
+    padding: 1px;
+  }
+  .icon {
+    font-size: 16px;
+    padding: 2px 5px;
+  }
+}
+
+.btn {
+  width: 100%;
+}
