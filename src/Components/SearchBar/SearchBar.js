@@ -13,38 +13,9 @@ import {
   getCityId,
   getUserLocation,
   getLocationRestaurants,
+  filterRestaurants,
 } from "../../Redux/Services/Actions";
 import { useHistory } from "react-router-dom";
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     // padding: "2px 4px",
-//     // // marginTop:'20px',
-//     // display: "flex",
-//     // alignItems: "center",
-//     // width: 100%,
-//     // justifyContent: "center",
-//   },
-//   root1: {
-//     // padding: "2px 4px",
-//     // // marginTop:'20px',
-//     // display: "flex",
-//     // alignItems: "center",
-//     // width: 345,
-//     // justifyContent: "center",
-//   },
-//   input: {
-//     // marginLeft: theme.spacing(2),
-//     // flex: 1,
-//   },
-//   iconButton: {
-//     // padding: 10,
-//   },
-//   divider: {
-//     // height: 28,
-//     // margin: 4,
-//   },
-// }));
 
 function SearchBar({
   cityId,
@@ -54,10 +25,12 @@ function SearchBar({
   getLocationRestaurants,
   entityType,
   entityId,
+  filterRestaurants,
 }) {
   let history = useHistory();
+  let [res, setRes] = useState("");
+  let loc = userLocation;
 
-  const [data, setData] = useState();
   const searchLocation = () => {
     if (navigator.geolocation) {
       console.log("called Searchlocation");
@@ -80,24 +53,36 @@ function SearchBar({
   };
 
   const handleRestaurantSearches = () => {
-    getLocationRestaurants(entityId, entityType, userLocation);
+    getLocationRestaurants(entityId, entityType, res);
     history.push("/restaurants");
   };
 
+  const handleRestaurantName = (e) => {
+    // let restaurant = e.target.value;
+    // if (timeout) {
+    //   console.log(timeout);
+    //   clearTimeout(timeout);
+    //   console.log(timeout);
+    // }
+    // console.log(timeout);
+    // timeout = setTimeout(() => {
+    //   getLocationRestaurants(entityId, entityType, restaurant);
+    // }, 1000);
+    setRes(e.target.value);
+  };
+
   let timeout;
+
   const handleChangeCity = (e) => {
     let city = e.target.value;
-    console.log(city);
-    console.log(timeout);
+
     if (timeout) {
-      console.log(timeout);
       clearTimeout(timeout);
     }
 
-    console.log(timeout);
     timeout = setTimeout(() => {
       SelectedCity(city);
-    }, 500);
+    }, 1000);
   };
 
   const opensearch = () => {
@@ -105,15 +90,21 @@ function SearchBar({
   };
 
   const toggleFilter = () => {};
-
+  console.log(history.location.pathname);
   return (
-    <div className={styles.searchbar}>
+    <div
+      className={styles.searchbar}
+      style={
+        history.location.pathname === "/"
+          ? { flexDirection: "column" }
+          : { flexDirection: "row" }
+      }
+    >
       <Paper component="form" className={styles.root}>
         <InputBase
-          onClick={() => opensearch()}
           className={styles.input}
+          placeholder="Enter location"
           value={userLocation}
-          placeholder="Enter location "
           onChange={(e) => handleChangeCity(e)}
           inputProps={{ "aria-label": "search google maps" }}
         />
@@ -130,26 +121,22 @@ function SearchBar({
           className={styles.input}
           placeholder="Search for restaurant, cuisine or dish..."
           inputProps={{ "aria-label": "search google maps" }}
+          onChange={(e) => handleRestaurantName(e)}
         />
         <IconButton className={styles.iconButton} aria-label="search">
           <SearchIcon />
         </IconButton>
       </Paper>
-      {history.location.pathname === "/" ? (
-        <Button
-          className={styles.btn}
-          style={{ display: "block" }}
-          variant="contained"
-          color="primary"
-          onClick={() => handleRestaurantSearches()}
-        >
-          Search
-        </Button>
-      ) : (
-        <Button className={styles.btn} variant="contained" color="primary">
-          Search
-        </Button>
-      )}
+      <Button
+        className={styles.btn}
+        style={{ display: "block" }}
+        variant="contained"
+        color="primary"
+        onClick={() => handleRestaurantSearches()}
+      >
+        Search
+      </Button>
+
       <Paper className={styles.filterContainer} onClick={() => toggleFilter()}>
         <Typography>Filter</Typography>
         <IconButton className={styles.tuneButton} aria-label="mylocation">
@@ -172,6 +159,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     SelectedCity: (query) => dispatch(getCityId(query)),
     getUserLocation: (lat, lon) => dispatch(getUserLocation(lat, lon)),
+    filterRestaurants: (res) => dispatch(filterRestaurants(res)),
     getLocationRestaurants: (entityId, entityType, userLocation) =>
       dispatch(getLocationRestaurants(entityId, entityType, userLocation)),
   };

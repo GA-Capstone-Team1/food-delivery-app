@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
       <Provider store={store}>
-        <Navbar></Navbar>
+        {/* <Navbar></Navbar> */}
         {/* <Api></Api> */}
         {/* <div style={{ margin: "0 auto" }}>
       </div> */}

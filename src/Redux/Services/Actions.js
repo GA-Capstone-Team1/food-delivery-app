@@ -2,9 +2,18 @@ import {
   GET_CITYID,
   GET_USER_LOCATION,
   GET_LOCATION_RESTAURANTS,
+  RESTAURANT_SEARCH,
 } from "./ActionTypes";
 import { api } from "../../Services/api";
 import axios from "axios";
+
+export const filterRestaurants = (restaurant) => {
+  console.log(restaurant);
+  return {
+    type: RESTAURANT_SEARCH,
+    payload: restaurant,
+  };
+};
 
 export const getCityId = (city) => {
   return (dispatch) => {

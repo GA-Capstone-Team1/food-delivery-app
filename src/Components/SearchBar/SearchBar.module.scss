@@ -6,23 +6,26 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 15px;
+  padding: 15px;
 
   @include Desktop() {
     flex-direction: row;
     flex-wrap: nowrap;
-    margin: 15px 0;
+    margin: 15px;
+    padding: 0;
+    border-radius: 5px;
   }
   .root {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 5px 0;
+    margin: 10px 0;
 
     .input {
       width: 100%;
       padding: 0px 10px;
+      box-shadow: 0px 0px 5px rgb(212, 212, 212);
     }
   }
 
@@ -30,9 +33,14 @@
     display: none;
     width: 250px;
     height: 45px;
+    margin: 10px;
+    background-color: orange;
     // @include Desktop() {
     //   display: block;
     // }
+  }
+  .btn:hover {
+    background-color: rgb(255, 180, 42);
   }
 
   .filterContainer {

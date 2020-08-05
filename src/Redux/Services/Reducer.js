@@ -2,17 +2,20 @@ import {
   GET_CITYID,
   GET_USER_LOCATION,
   GET_LOCATION_RESTAURANTS,
+  RESTAURANT_SEARCH,
 } from "./ActionTypes";
 
 const initialState = {
   city: "",
   cityId: Number,
-  userLocation: String,
+  userLocation: "",
   entity_type: "",
   entity_id: Number,
   locationRestaurants: "",
+  restaurantQuery: "",
 };
 export const ServicesReducer = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
     case GET_CITYID:
       return {
@@ -32,6 +35,12 @@ export const ServicesReducer = (state = initialState, action) => {
       return {
         ...state,
         locationRestaurants: action.payload,
+      };
+
+    case RESTAURANT_SEARCH:
+      return {
+        ...state,
+        restaurantQuery: action.payload,
       };
 
     default:
