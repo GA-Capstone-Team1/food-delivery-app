@@ -1,3 +1,202 @@
+@import "../../SCSS/Mixins";
 .container {
-  max-width: 1024px;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  background: linear-gradient(
+    rgba(20, 20, 20, 0.384),
+    rgba(83, 83, 83, 0.473),
+    rgba(151, 150, 150, 0)
+  );
+  overflow: auto;
+
+  @include Desktop() {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background: none;
+    background-color: rgb(255, 255, 255);
+  }
+}
+.right {
+  width: 100%;
+  height: 100%;
+  background-color: #ffc120;
+  z-index: -1;
+  position: absolute;
+  @include Desktop() {
+    z-index: 0;
+    width: 40%;
+    position: static;
+    background-color: #ffc120;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .top {
+    display: none;
+    @include Desktop() {
+      height: auto;
+      width: 150px;
+      justify-self: start;
+      align-self: flex-end;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 15px;
+      flex-grow: 1;
+      padding-right: 50px;
+    }
+
+    .login {
+      padding: 5px;
+      cursor: pointer;
+      color: white;
+      user-select: none;
+    }
+    .signup {
+      padding: 5px 15px;
+      color: white;
+      height: fit-content;
+      cursor: pointer;
+      background-color: rgb(255, 145, 0);
+      border-radius: 5px;
+      user-select: none;
+    }
+
+    .signup:active {
+      transition: all 500ms linear;
+      font-size: 8px;
+      user-select: none;
+    }
+    .login:active {
+      transition: all 500ms linear;
+      font-size: 8px;
+      user-select: none;
+    }
+  }
+  .image {
+    justify-self: start;
+    align-self: flex-start;
+    flex-grow: 1;
+    opacity: 1;
+  }
+
+  .pizzaImage {
+    width: 100%;
+  }
+}
+.left {
+  margin: 10% auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  @include Desktop() {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+  }
+
+  .searchBar {
+    width: 100%;
+    @include Desktop() {
+      width: 500px;
+      margin: 0 auto;
+    }
+  }
+  .headline {
+    padding: 15px;
+    padding-top: 55px;
+
+    @include Desktop() {
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    .text {
+      font-weight: 700;
+      color: rgb(255, 208, 0);
+      text-align: center;
+      @include Desktop() {
+        color: rgb(255, 145, 0);
+        font-size: 4em;
+      }
+    }
+    .subHead {
+      font-size: 24px;
+      padding: 15px 0;
+      font-weight: 900;
+      color: rgb(243, 236, 236);
+      text-align: center;
+      line-height: 16 * 1.4px;
+      @include Desktop() {
+        font-weight: 500;
+        text-align: center;
+        font-size: 2em;
+
+        color: rgb(158, 81, 9);
+      }
+    }
+
+    .subText {
+      font-size: 16px;
+      text-align: center;
+      color: white;
+      font-weight: lighter;
+      @include Desktop() {
+        text-align: center;
+        font-size: 100%;
+        color: rgb(247, 177, 112);
+      }
+    }
+  }
+}
+
+.mobileLoginSignup {
+  padding: 15px;
+  width: 150px;
+  height: fit-content;
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @include Desktop() {
+    display: none;
+  }
+  .login {
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+    user-select: none;
+  }
+  .signup {
+    padding: 5px 15px;
+    color: white;
+    height: fit-content;
+    cursor: pointer;
+    background-color: rgb(255, 145, 0);
+    border-radius: 5px;
+    user-select: none;
+  }
+
+  .signup:active {
+    transition: all 500ms linear;
+    font-size: 14px;
+    user-select: none;
+  }
+  .login:active {
+    transition: all 500ms linear;
+    font-size: 14px;
+    user-select: none;
+  }
 }

@@ -10,9 +10,16 @@ import Paper from "@material-ui/core/Paper";
 import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
 
-function RecipeReviewCard({ restaurants }) {
+function RecipeReviewCard({ restaurants, restaurantQuery }) {
   console.log(restaurants);
+  console.log(restaurantQuery);
 
+  if (restaurantQuery) {
+    // restaurants.filter((restaurant) => {
+    //   return;
+    // });
+  }
+  // let restaurantList = restaurants;
   return (
     <>
       <div className={styles.cardContainer}>
@@ -56,6 +63,7 @@ function RecipeReviewCard({ restaurants }) {
 const mapStateToProps = (state) => {
   return {
     restaurants: state.service.locationRestaurants,
+    restaurantQuery: state.service.restaurantQuery,
   };
 };
 const mapDispatchToProps = (dispatch) => {
