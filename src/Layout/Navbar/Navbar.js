@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Navbar.module.scss";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -45,7 +46,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: "#fcbf49" }}>
         <Toolbar>
           <IconButton
             edge="start"

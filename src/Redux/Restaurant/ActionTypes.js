@@ -1,0 +1,3 @@
+export const SELECTED_CUISINE = "SELECTED_CUISINE";
+export const SORTBY = "GET_USER_LOCATION";
+export const PEFERENCE = "PEFERENCE";

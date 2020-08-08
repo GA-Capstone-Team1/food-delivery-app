@@ -61,9 +61,39 @@ export const getUserLocation = (lat, lon) => {
 
 //developers.zomato.com/api/v2.1/search?entity_id=11431&entity_type=city&q=sangli&lat=16.85&lon=74.58
 
-export const getLocationRestaurants = (entityId, entityType, query) => {
+export const getLocationRestaurants = (
+  entityId,
+  entityType,
+  query,
+  sort,
+  order
+) => {
   return (dispatch) => {
     console.log("called");
+    if (sort || order) {
+      axios
+        .get(
+          `${api}search?entity_id=${entityId}&entity_type=${entityType}&sort=${sort}&order=${order}
+
+      `,
+          {
+            headers: {
+              Accept: "application/json",
+              "user-key": "dae550f2de39692413804f96c793bc96",
+            },
+          }
+        )
+        .then((data) => {
+          console.log(`${api}search?entity_id=${entityId}&entity_type=${entityType}&sort=${sort}&order=${order}
+
+          `);
+          console.log({ data });
+          dispatch({
+            type: GET_LOCATION_RESTAURANTS,
+            payload: data.data,
+          });
+        });
+    }
     axios
       .get(
         `${api}search?entity_id=${entityId}&entity_type=${entityType}&q=${query}
