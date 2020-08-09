@@ -4,12 +4,13 @@
   @include Desktop() {
     max-width: 1024px;
     margin: 0 auto;
-    display: grid;
+    // display: grid;
     grid-template-columns: 30% 70%;
     grid-template-rows: auto;
     grid-template-areas:
-      "search  search"
-      "sidebar restaurants";
+      "search"
+      "upperbar"
+      "cardDiv";
   }
 }
 
@@ -83,4 +84,6 @@
   padding: 20px;
   display: grid;
   grid-template-columns: auto auto;
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
 }

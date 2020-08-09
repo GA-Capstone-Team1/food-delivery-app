@@ -8,7 +8,7 @@
 }
 .root {
   @include Desktop() {
-    width: 49%;
+    width: 100%;
     margin-bottom: 15px;
   }
 
