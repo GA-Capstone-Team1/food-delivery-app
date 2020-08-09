@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Navbar.module.scss";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -24,8 +25,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
-
-export default function Navbar() {
+function Navbar() {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -45,7 +45,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: "#ffc120" }}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -105,3 +105,5 @@ export default function Navbar() {
     </div>
   );
 }
+
+export default Navbar;

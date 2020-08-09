@@ -1,19 +1,30 @@
 @import "../../SCSS/Mixins";
 
 .filterSideBarContainer {
-  background-color: #fcbf49;
-  width: fit-content;
-  padding: 15px;
-  position: absolute;
-  z-index: 2;
-  display: none;
+  position: fixed;
+  z-index: 5;
+  right: 0;
+  width: 250px;
+  top: 0;
+  bottom: 0;
+  padding: 0;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px gray;
+  overflow: auto;
+  transition: all linear 500ms;
 
   @include Desktop() {
-    margin-top: 15px;
+    position: fixed;
+    z-index: 5;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 350px;
+    padding: 0;
     background-color: #ffffff;
-    display: block;
-    position: relative;
-    box-shadow: 0px 0px 5px gray;
+    box-shadow: 0px 0px 8px gray;
+    overflow: hidden;
+    transition: all linear 500ms;
   }
 
   .head {
@@ -29,6 +40,7 @@
 
   .filterName {
     font-size: 16px;
+    color: #f75409;
   }
 
   .filterContainer {
@@ -48,9 +60,6 @@
     }
     .filterName:hover {
       color: red;
-    }
-    .filterName:active {
-      color: rebeccapurple;
     }
   }
 }

@@ -5,8 +5,14 @@ import { getCityId } from "../../Redux/Services/Actions";
 import { connect } from "react-redux";
 import pizza from "../../images/pizza2.png";
 import { Typography } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 const LandingPage = ({ cityId, SelectedCity }) => {
+  let history = useHistory();
+  const handleLogin = () => {
+    history.push("/login");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.mobileLoginSignup}>
@@ -41,7 +47,11 @@ const LandingPage = ({ cityId, SelectedCity }) => {
       </div>
       <div className={styles.right}>
         <div className={styles.top}>
-          <Typography className={styles.login} variant="subtitle1">
+          <Typography
+            className={styles.login}
+            variant="subtitle1"
+            onClick={() => handleLogin()}
+          >
             <strong>Login</strong>
           </Typography>
           <Typography className={styles.signup} variant="subtitle1">

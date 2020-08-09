@@ -136,13 +136,6 @@ function SearchBar({
       >
         Search
       </Button>
-
-      <Paper className={styles.filterContainer} onClick={() => toggleFilter()}>
-        <Typography>Filter</Typography>
-        <IconButton className={styles.tuneButton} aria-label="mylocation">
-          <TuneIcon className={styles.tuneIcon} />
-        </IconButton>
-      </Paper>
     </div>
   );
 }
