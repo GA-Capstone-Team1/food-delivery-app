@@ -15,6 +15,7 @@ import LandingPage from "./Pages/landingPage/LandingPage";
 import firebase from "firebase/app";
 import firebaseConfig from "./FirebaseConfig/config";
 import Login from "./Pages/Login/Login";
+import RestaurantDish from "./Components/RestaurantDish/RestaurantDish";
 
 firebase.initializeApp(firebaseConfig);
 
@@ -29,6 +30,7 @@ function App() {
             <Route exact path="/" component={LandingPage}></Route>
             <Route exact path="/restaurants" component={Restaurants}></Route>
             <Route exact path="/res" component={RestaurantDetails}></Route>
+            <Route exact path="/resdish" component={RestaurantDish}></Route>
           </Switch>
         </Router>
       </Provider>
