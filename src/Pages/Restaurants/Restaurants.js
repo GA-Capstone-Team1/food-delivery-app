@@ -4,10 +4,13 @@ import FiltersSideBar from "../../Components/FiltersSideBar/FIltersSideBar";
 import Card from "../../Components/RestaurantCard/RestaurantCard";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import SearchIcon from "@material-ui/icons/Search";
-import TuneIcon from '@material-ui/icons/Tune';
-import { Grid , Typography,Button} from "@material-ui/core";
+import TuneIcon from "@material-ui/icons/Tune";
+import { Typography, Button } from "@material-ui/core";
+import { connect } from "react-redux";
+import NavBar from "../../Layout/Navbar/Navbar";
+import { filterBar } from "../../Redux/UIModals/Actions";
 
-function Restaurants() {
+function Restaurants({ setFilterBar, filterBar, location }) {
   const searchLocation = () => {
     if (navigator.geolocation) {
       console.log("called Searchlocation");
@@ -15,6 +18,16 @@ function Restaurants() {
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
+  };
+
+  if (filterBar === true) {
+    var display = "block";
+  } else {
+    display = "none";
+  }
+
+  let handleFilterBar = () => {
+    setFilterBar();
   };
 
   function success(position) {
@@ -28,41 +41,51 @@ function Restaurants() {
     searchLocation();
   });
   return (
-    <div container className={styles.container}>
-      <div className={styles.searchbar}>
-        <SearchBar />
-      </div>
-      {/* <div className={styles.FiltersSideBar}>
+    <>
+      <div
+        className={styles.backdrop}
+        onClick={() => handleFilterBar()}
+        style={{ display: display }}
+      ></div>
+      <NavBar></NavBar>
+
+      <div container className={styles.container}>
         <FiltersSideBar></FiltersSideBar>
-      </div>
-      <div className={styles.cards}>
-        <Card></Card>
-      </div> */}
-      <div className={styles.upperBar}>
-        <div className={styles.loc}>
-          <Typography className={styles.locText}>Restaurant in Location</Typography>
+
+        <div className={styles.searchbar}>
+          <SearchBar />
         </div>
-        <div className={styles.search}>
-          <SearchIcon/>
-          <Button className={styles.btn}>Search</Button>
+        <div className={styles.upperBar}>
+          <div className={styles.loc}>
+            <Typography variant="h6" className={styles.locText}>
+              Search Results for {location}
+            </Typography>
+          </div>
+          <div className={styles.filter} onClick={() => handleFilterBar()}>
+            <TuneIcon />
+            <Button>Filters</Button>
+          </div>
         </div>
-        <div className={styles.filter}>
-          <TuneIcon/>
-          <Button>Filters</Button>
+
+        <div className={styles.cardDiv}>
+          <Card />
         </div>
       </div>
-      <div className={styles.cardDiv}>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-      </div>
-    </div>
+    </>
   );
 }
 
-export default Restaurants;
+const mapStateToProps = (state) => {
+  return {
+    filterBar: state.ui.filterBar,
+    location: state.service.userLocation,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setFilterBar: (value) => dispatch(filterBar(value)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Restaurants);

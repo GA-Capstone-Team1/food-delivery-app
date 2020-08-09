@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import styles from "./RestaurantCard.module.scss";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -11,55 +11,75 @@ import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
 
 function RecipeReviewCard({ restaurants, restaurantQuery }) {
-  console.log(restaurants);
-  console.log(restaurantQuery);
+  console.log(restaurants.restaurants);
 
-  if (restaurantQuery) {
-    // restaurants.filter((restaurant) => {
-    //   return;
-    // });
-  }
-  // let restaurantList = restaurants;
-  return (
-    <>
-      <div className={styles.cardContainer}>
-        <Card className={styles.root}>
-          <CardMedia
-            className={styles.media}
-            image="./../../public/cc10.jpg"
-            title="Paella dish"
-          />
-          <CardContent>
-            <Typography variant="h6">Domino's Pizza</Typography>
-            <Paper
-              style={{ backgroundColor: "#ffffff" }}
-              className={styles.startContainer}
+  // if (restaurants) {
+  //   restaurants.restaurants.map((value, key) =>
+  //     console.dir(key + ":" + value.restaurant.name)
+  //   );
+  // }
+
+  const handleRestaurantClick = (id) => {};
+
+  if (restaurants) {
+    return (
+      <>
+        <div className={styles.cardContainer}>
+          {restaurants.restaurants.map((value, key) => (
+            <Card
+              className={styles.root}
+              onClick={(e) => handleRestaurantClick(value.restaurant.id)}
+              key={value.restaurant.id}
             >
-              <Typography variant="subtitle2">5</Typography>
-              <StarRateIcon className={styles.star}></StarRateIcon>
-            </Paper>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Pizza, Fast Food
-            </Typography>
-            <div className={styles.list}>
-              <Typography variant="body2" color="textSecondary" component="p">
-                Rs 350 for Two
-              </Typography>
+              <CardMedia
+                className={styles.media}
+                image={value.restaurant.thumb}
+                title="Paella dish"
+              />
+              <CardContent>
+                <Typography variant="h6">{value.restaurant.name}</Typography>
+                <Paper
+                  style={{ backgroundColor: "#ffffff" }}
+                  className={styles.startContainer}
+                >
+                  <Typography variant="subtitle2">
+                    {value.restaurant.user_rating.aggregate_rating}
+                  </Typography>
+                  <StarRateIcon className={styles.star}></StarRateIcon>
+                </Paper>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Pizza, Fast Food
+                </Typography>
+                <div className={styles.list}>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {`Rs ${value.restaurant.average_cost_for_two} for Two`}
+                  </Typography>
 
-              <Typography variant="body2" color="textSecondary" component="p">
-                34mins
-              </Typography>
-            </div>
-          </CardContent>
-          <CardActions disableSpacing>
-            <Button>Order</Button>
-          </CardActions>
-        </Card>
-      </div>
-    </>
-  );
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {value.restaurant.timings}
+                  </Typography>
+                </div>
+              </CardContent>
+              <CardActions disableSpacing>
+                <Button>Order</Button>
+              </CardActions>
+            </Card>
+          ))}
+        </div>
+      </>
+    );
+  } else {
+    return <div>Loading</div>;
+  }
 }
-
 const mapStateToProps = (state) => {
   return {
     restaurants: state.service.locationRestaurants,
