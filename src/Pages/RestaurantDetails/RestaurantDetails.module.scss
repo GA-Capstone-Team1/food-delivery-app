@@ -1,0 +1,25 @@
+.container {
+  width: 1024px;
+  margin: 0 auto;
+}
+.bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .FoodItems {
+    width: 60%;
+  }
+
+  .cart {
+    width: 30%;
+    border: 1px solid rgb(211, 211, 211);
+    padding: 15px;
+  }
+}
+.tabBar {
+  width: 63%;
+  margin-bottom: 15px;
+}
