@@ -1,0 +1,39 @@
+.FoodItemContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.FoodItems {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  padding: 15px;
+  align-items: center;
+  border-bottom: 1px solid rgb(221, 220, 220);
+  width: 100%;
+}
+.imgContainer {
+  width: 100px;
+  height: 100px;
+}
+.img {
+  width: 100%;
+  justify-content: start;
+}
+.btn {
+  width: 120px;
+  height: fit-content;
+  height: auto;
+  justify-self: flex-end;
+  align-self: center;
+}
+
+.dish {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  flex-grow: 1;
+}
