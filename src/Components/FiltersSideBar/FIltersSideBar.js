@@ -6,10 +6,22 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { connect } from "react-redux";
 import { getLocationRestaurants } from "../../Redux/Services/Actions";
 
-const FiltersSideBar = ({ getLocationRestaurants, entityId, entityType }) => {
+const FiltersSideBar = ({
+  getLocationRestaurants,
+  entityId,
+  entityType,
+  filterBar,
+  searchQuery,
+}) => {
   let [selectedCuisine, setSelectedCuisine] = useState();
   let [sortBy, setSortBy] = useState();
   let [preference, setPreference] = useState();
+
+  if (filterBar === true) {
+    var width = "500px";
+  } else {
+    width = "0px";
+  }
 
   const handleDishType = (e) => {
     e.preventDefault();
@@ -30,8 +42,8 @@ const FiltersSideBar = ({ getLocationRestaurants, entityId, entityType }) => {
       order = "asc";
     }
     console.log(sort, order);
-
-    getLocationRestaurants(entityId, entityType, " ", sort, order);
+    console.log(searchQuery);
+    getLocationRestaurants(entityId, entityType, selectedCuisine, sort, order);
 
     // getLocationRestaurants(entityId, entityType, e.target.innerHTML, sort);
   };
@@ -40,170 +52,174 @@ const FiltersSideBar = ({ getLocationRestaurants, entityId, entityType }) => {
   console.log(selectedCuisine);
 
   return (
-    <div className={styles.filterSideBarContainer}>
-      <Typography className={styles.head}>Filters</Typography>
-      <div>
-        <Typography variant="subtitle1" style={{ color: "red" }}>
-          <strong>{selectedCuisine}</strong>
-        </Typography>
-        <Typography variant="subtitle1" style={{ color: "red" }}>
-          <strong>{sortBy}</strong>
-        </Typography>
-        {/* <Typography variant="subtitle1" style={{ color: "red" }}>
+    <div className={styles.filterSideBarContainer} style={{ maxWidth: width }}>
+      <div style={{ padding: "15px" }}>
+        <Typography className={styles.head}>Filters</Typography>
+        <div>
+          <Typography variant="subtitle1" style={{ color: "red" }}>
+            <strong>{selectedCuisine}</strong>
+          </Typography>
+          <Typography variant="subtitle1" style={{ color: "red" }}>
+            <strong>{sortBy}</strong>
+          </Typography>
+          {/* <Typography variant="subtitle1" style={{ color: "red" }}>
           <strong>{selectedCuisine}</strong>
         </Typography> */}
-      </div>
-      <div>
-        <Typography className={styles.filterType}>Preference</Typography>
-        <Box className={styles.filterContainer}>
-          <Typography className={styles.filterName}>Veg</Typography>
-          <Checkbox
-            className={styles.Checkbox}
-            defaultChecked
-            value="non-veg"
-            color="primary"
-            inputProps={{ "aria-label": "secondary checkbox" }}
-          />
-        </Box>
-        <Box className={styles.filterContainer}>
-          <Typography variant="1" className={styles.filterName}>
-            Non-Veg
-          </Typography>
-          <Checkbox
-            className={styles.Checkbox}
-            value="non-veg"
-            color="primary"
-            inputProps={{ "aria-label": "secondary checkbox" }}
-          />
-        </Box>
-      </div>
-      <div>
-        <Typography className={styles.filterType}>Cuisines</Typography>
-        <div>
-          <Typography>{}</Typography>
         </div>
-        <Box className={styles.filterContainer}>
-          <Typography
-            value="north-indian"
-            onClick={(e) => handleDishType(e)}
-            variant="1"
-            style={selectedCuisine === "North India" ? { color: "red" } : null}
-            className={styles.filterName}
-          >
-            North Indian
-          </Typography>
-        </Box>
-        <Box className={styles.filterContainer}>
-          <Typography
-            variant="1"
-            className={styles.filterName}
-            onClick={(e) => handleDishType(e)}
-          >
-            Chinese
-          </Typography>
-        </Box>{" "}
-        <Box className={styles.filterContainer}>
-          <Typography
-            variant="1"
-            className={styles.filterName}
-            onClick={(e) => handleDishType(e)}
-          >
-            Desserts
-          </Typography>
-        </Box>
-        <Box className={styles.filterContainer}>
-          <Typography
-            variant="1"
-            className={styles.filterName}
-            onClick={(e) => handleDishType(e)}
-          >
-            Beverages
-          </Typography>
-        </Box>
-        <Box className={styles.filterContainer}>
-          <Typography
-            variant="1"
-            className={styles.filterName}
-            onClick={(e) => handleDishType(e)}
-          >
-            Bakery
-          </Typography>
-        </Box>
-        <Box className={styles.filterContainer}>
-          <Typography
-            variant="1"
-            className={styles.filterName}
-            onClick={(e) => handleDishType(e)}
-          >
-            South Indian
-          </Typography>
-        </Box>
-        <Box className={styles.filterContainer}>
-          <Typography
-            variant="1"
-            className={styles.filterName}
-            onClick={(e) => handleDishType(e)}
-          >
-            Street Food
-          </Typography>
-        </Box>
-        <Box className={styles.filterContainer}>
-          <Typography
-            variant="1"
-            className={styles.filterName}
-            onClick={(e) => handleDishType(e)}
-          >
-            Mughlai
-          </Typography>
-        </Box>
-        <Box className={styles.filterContainer}>
-          <Typography
-            variant="1"
-            className={styles.filterName}
-            onClick={(e) => handleDishType(e)}
-          >
-            Biryani
-          </Typography>
-        </Box>
-      </div>
-      <div>
-        <Typography className={styles.filterType}>Sort By</Typography>
-        <Box className={styles.filterContainer}>
-          <Typography
-            variant="1"
-            className={styles.filterName}
-            onClick={(e) => handleSortBy(e)}
-          >
-            Poupularity - high to low
-          </Typography>
-        </Box>
-        <Box className={styles.filterContainer}>
-          <Typography
-            variant="1"
-            className={styles.filterName}
-            onClick={(e) => handleSortBy(e)}
-          >
-            Rating - high to low
-          </Typography>
-        </Box>{" "}
-        <Box className={styles.filterContainer}>
-          <Typography
-            variant="1"
-            className={styles.filterName}
-            onClick={(e) => handleSortBy(e)}
-          >
-            Cost - high to low
-          </Typography>
-        </Box>
-        <Box className={styles.filterContainer}>
-          <Typography
-            variant="1"
-            className={styles.filterName}
-            onClick={(e) => handleSortBy(e)}
-          >
-            Cost - low to high
-          </Typography>
-        </Box>
+        <div>
+          <Typography className={styles.filterType}>Preference</Typography>
+          <Box className={styles.filterContainer}>
+            <Typography className={styles.filterName}>Veg</Typography>
+            <Checkbox
+              className={styles.Checkbox}
+              defaultChecked
+              value="non-veg"
+              color="primary"
+              inputProps={{ "aria-label": "secondary checkbox" }}
+            />
+          </Box>
+          <Box className={styles.filterContainer}>
+            <Typography variant="1" className={styles.filterName}>
+              Non-Veg
+            </Typography>
+            <Checkbox
+              className={styles.Checkbox}
+              value="non-veg"
+              color="primary"
+              inputProps={{ "aria-label": "secondary checkbox" }}
+            />
+          </Box>
+        </div>
+        <div>
+          <Typography className={styles.filterType}>Cuisines</Typography>
+          <div>
+            <Typography>{}</Typography>
+          </div>
+          <Box className={styles.filterContainer}>
+            <Typography
+              value="north-indian"
+              onClick={(e) => handleDishType(e)}
+              variant="1"
+              style={
+                selectedCuisine === "North India" ? { color: "red" } : null
+              }
+              className={styles.filterName}
+            >
+              North Indian
+            </Typography>
+          </Box>
+          <Box className={styles.filterContainer}>
+            <Typography
+              variant="1"
+              className={styles.filterName}
+              onClick={(e) => handleDishType(e)}
+            >
+              Chinese
+            </Typography>
+          </Box>{" "}
+          <Box className={styles.filterContainer}>
+            <Typography
+              variant="1"
+              className={styles.filterName}
+              onClick={(e) => handleDishType(e)}
+            >
+              Desserts
+            </Typography>
+          </Box>
+          <Box className={styles.filterContainer}>
+            <Typography
+              variant="1"
+              className={styles.filterName}
+              onClick={(e) => handleDishType(e)}
+            >
+              Beverages
+            </Typography>
+          </Box>
+          <Box className={styles.filterContainer}>
+            <Typography
+              variant="1"
+              className={styles.filterName}
+              onClick={(e) => handleDishType(e)}
+            >
+              Bakery
+            </Typography>
+          </Box>
+          <Box className={styles.filterContainer}>
+            <Typography
+              variant="1"
+              className={styles.filterName}
+              onClick={(e) => handleDishType(e)}
+            >
+              South Indian
+            </Typography>
+          </Box>
+          <Box className={styles.filterContainer}>
+            <Typography
+              variant="1"
+              className={styles.filterName}
+              onClick={(e) => handleDishType(e)}
+            >
+              Street Food
+            </Typography>
+          </Box>
+          <Box className={styles.filterContainer}>
+            <Typography
+              variant="1"
+              className={styles.filterName}
+              onClick={(e) => handleDishType(e)}
+            >
+              Mughlai
+            </Typography>
+          </Box>
+          <Box className={styles.filterContainer}>
+            <Typography
+              variant="1"
+              className={styles.filterName}
+              onClick={(e) => handleDishType(e)}
+            >
+              Biryani
+            </Typography>
+          </Box>
+        </div>
+        <div>
+          <Typography className={styles.filterType}>Sort By</Typography>
+          <Box className={styles.filterContainer}>
+            <Typography
+              variant="1"
+              className={styles.filterName}
+              onClick={(e) => handleSortBy(e)}
+            >
+              Poupularity - high to low
+            </Typography>
+          </Box>
+          <Box className={styles.filterContainer}>
+            <Typography
+              variant="1"
+              className={styles.filterName}
+              onClick={(e) => handleSortBy(e)}
+            >
+              Rating - high to low
+            </Typography>
+          </Box>{" "}
+          <Box className={styles.filterContainer}>
+            <Typography
+              variant="1"
+              className={styles.filterName}
+              onClick={(e) => handleSortBy(e)}
+            >
+              Cost - high to low
+            </Typography>
+          </Box>
+          <Box className={styles.filterContainer}>
+            <Typography
+              variant="1"
+              className={styles.filterName}
+              onClick={(e) => handleSortBy(e)}
+            >
+              Cost - low to high
+            </Typography>
+          </Box>
+        </div>
       </div>
     </div>
   );
@@ -215,6 +231,8 @@ const mapStateToProps = (state) => {
     userLocation: state.service.userLocation,
     entityType: state.service.entity_type,
     entityId: state.service.entity_id,
+    filterBar: state.ui.filterBar,
+    searchQuery: state.service.locationRestaurants,
   };
 };
 const mapDispatchToProps = (dispatch) => {

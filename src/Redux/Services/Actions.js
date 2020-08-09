@@ -71,28 +71,59 @@ export const getLocationRestaurants = (
   return (dispatch) => {
     console.log("called");
     if (sort || order) {
-      axios
-        .get(
-          `${api}search?entity_id=${entityId}&entity_type=${entityType}&sort=${sort}&order=${order}
+      if (query) {
+        axios
+          .get(
+            `${api}search?entity_id=${entityId}&entity_type=${entityType}&q=${query}&sort=${sort}&order=${order}
 
       `,
-          {
-            headers: {
-              Accept: "application/json",
-              "user-key": "dae550f2de39692413804f96c793bc96",
-            },
-          }
-        )
-        .then((data) => {
-          console.log(`${api}search?entity_id=${entityId}&entity_type=${entityType}&sort=${sort}&order=${order}
+            {
+              headers: {
+                Accept: "application/json",
+                "user-key": "dae550f2de39692413804f96c793bc96",
+              },
+            }
+          )
+          .then((data) => {
+            console.log(`${api}search?entity_id=${entityId}&entity_type=${entityType}&sort=${sort}&order=${order}
 
           `);
-          console.log({ data });
-          dispatch({
-            type: GET_LOCATION_RESTAURANTS,
-            payload: data.data,
+            console.log(`${api}search?entity_id=${entityId}&entity_type=${entityType}&q=${query}&sort=${sort}&order=${order}
+
+          `);
+            console.log({ data });
+            dispatch({
+              type: GET_LOCATION_RESTAURANTS,
+              payload: data.data,
+            });
           });
-        });
+      } else {
+        axios
+          .get(
+            `${api}search?entity_id=${entityId}&entity_type=${entityType}&sort=${sort}&order=${order}
+
+      `,
+            {
+              headers: {
+                Accept: "application/json",
+                "user-key": "dae550f2de39692413804f96c793bc96",
+              },
+            }
+          )
+          .then((data) => {
+            console.log(`${api}search?entity_id=${entityId}&entity_type=${entityType}&sort=${sort}&order=${order}
+
+          `);
+            console.log(`${api}search?entity_id=${entityId}&entity_type=${entityType}&sort=${sort}&order=${order}
+
+          `);
+            console.log({ data });
+            dispatch({
+              type: GET_LOCATION_RESTAURANTS,
+              payload: data.data,
+            });
+          });
+      }
     }
     axios
       .get(

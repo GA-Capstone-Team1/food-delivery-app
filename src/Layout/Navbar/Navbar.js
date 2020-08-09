@@ -25,8 +25,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
-
-export default function Navbar() {
+function Navbar() {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -46,7 +45,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ backgroundColor: "#fcbf49" }}>
+      <AppBar position="static" style={{ backgroundColor: "#ffc120" }}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -106,3 +105,5 @@ export default function Navbar() {
     </div>
   );
 }
+
+export default Navbar;
