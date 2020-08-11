@@ -3,8 +3,9 @@ import {
   GET_USER_LOCATION,
   GET_LOCATION_RESTAURANTS,
   RESTAURANT_SEARCH,
+  SEARCH_MENUS,
 } from "./ActionTypes";
-import { api } from "../../Services/api";
+import { api, forkifyApi} from "../../Services/api";
 import axios from "axios";
 
 export const filterRestaurants = (restaurant) => {
@@ -144,5 +145,19 @@ export const getLocationRestaurants = (
           payload: data.data,
         });
       });
+  };
+};
+
+
+export const searchDishes = (query) =>{
+  return (dispatch) =>{
+    axios.get(`${forkifyApi}search?q=${query}`)
+    .then((data)=>
+    dispatch({
+      type: SEARCH_MENUS,
+      payload: data,
+    })
+    )
+    .catch((err) => console.log(err)); 
   };
 };
