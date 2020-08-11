@@ -3,9 +3,12 @@ import {
   GET_USER_LOCATION,
   GET_LOCATION_RESTAURANTS,
   RESTAURANT_SEARCH,
+  SEARCH_MENUS,
 } from "./ActionTypes";
-import { api } from "../../Services/api";
+import { api, forkifyApi } from "../../Services/api";
 import axios from "axios";
+
+// filter Restaurants according to search query
 
 export const filterRestaurants = (restaurant) => {
   console.log(restaurant);
@@ -14,6 +17,8 @@ export const filterRestaurants = (restaurant) => {
     payload: restaurant,
   };
 };
+
+// Get city ID with city query
 
 export const getCityId = (city) => {
   return (dispatch) => {
@@ -34,6 +39,8 @@ export const getCityId = (city) => {
       });
   };
 };
+
+// Detect user location with lat & lon
 
 export const getUserLocation = (lat, lon) => {
   return (dispatch) => {
@@ -60,6 +67,8 @@ export const getUserLocation = (lat, lon) => {
 };
 
 //developers.zomato.com/api/v2.1/search?entity_id=11431&entity_type=city&q=sangli&lat=16.85&lon=74.58
+
+// Get restaurants in user location using entiyId entityType
 
 export const getLocationRestaurants = (
   entityId,
@@ -144,5 +153,21 @@ export const getLocationRestaurants = (
           payload: data.data,
         });
       });
+  };
+};
+
+// get dishesh from forkify
+
+export let searchDishes = (query) => {
+  return (dispatch) => {
+    axios
+      .get(`${forkifyApi}search?q=${query}`)
+      .then(({ data }) =>
+        dispatch({
+          type: SEARCH_MENUS,
+          payload: data,
+        })
+      )
+      .catch((err) => console.log(err));
   };
 };
