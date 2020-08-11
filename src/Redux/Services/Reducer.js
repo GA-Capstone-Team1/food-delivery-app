@@ -3,6 +3,7 @@ import {
   GET_USER_LOCATION,
   GET_LOCATION_RESTAURANTS,
   RESTAURANT_SEARCH,
+  SEARCH_MENUS,
 } from "./ActionTypes";
 
 const initialState = {
@@ -13,7 +14,9 @@ const initialState = {
   entity_id: Number,
   locationRestaurants: "",
   restaurantQuery: "",
+  foodMenus: null,
 };
+
 export const ServicesReducer = (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
@@ -41,6 +44,12 @@ export const ServicesReducer = (state = initialState, action) => {
       return {
         ...state,
         restaurantQuery: action.payload,
+      };
+
+    case SEARCH_MENUS:
+      return {
+        ...state,
+        foodMenus: action.payload,
       };
 
     default:
