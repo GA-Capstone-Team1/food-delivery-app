@@ -43,7 +43,7 @@ function Cart() {
           </Typography>
         </div>
       </div>
-      <Button variant="contained" color="primary" className={styles.btn}>
+      <Button variant="contained" style={{backgroundColor:'rgb(255, 193, 32)', color:'#fff'}} className={styles.btn}>
         Checkout
       </Button>
     </div>

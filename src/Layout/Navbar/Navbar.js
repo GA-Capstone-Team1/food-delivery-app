@@ -13,6 +13,8 @@ import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import logo from "../../images/reslogo2.png";
+import { CardMedia } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,6 +55,9 @@ function Navbar() {
             color="inherit"
             aria-label="menu"
           >
+          <CardMedia
+          image={logo}
+          ></CardMedia>
             <Typography>OrderNow</Typography>
           </IconButton>
 

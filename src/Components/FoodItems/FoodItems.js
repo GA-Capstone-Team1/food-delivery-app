@@ -36,6 +36,7 @@ let FoodItems = ({ searchDishes, foodMenus }) => {
                 </div>
               </div>
               <div className={styles.btnContainer}>
+
                 <Button variant="outlined" className={styles.btn}>
                   Add
                 </Button>

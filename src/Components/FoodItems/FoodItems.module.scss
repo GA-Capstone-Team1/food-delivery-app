@@ -39,10 +39,12 @@
 }
 .btn {
   width: 60px;
+  background-color: rgb(255, 193, 32);
   height: fit-content;
   height: auto;
   justify-self: flex-end;
   align-self: center;
+  color: #fff;
 
   @include Desktop() {
     width: 100px;

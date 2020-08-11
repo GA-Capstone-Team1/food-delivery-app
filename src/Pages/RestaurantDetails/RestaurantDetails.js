@@ -8,6 +8,8 @@ import FoodItems from "../../Components/FoodItems/FoodItems";
 import TabBarOverviewMenu from "../../Components/TabBarOverviewMenus/TabBarOverviewMenu";
 import RestaurantDish from "../../Components/RestaurantDish/RestaurantDish";
 import { connect } from "react-redux";
+import VerticalTabs from "../../Components/VerticalTab/VerticalTab";
+
 
 function RestaurantDetails({ menus }) {
   return (
@@ -20,6 +22,9 @@ function RestaurantDetails({ menus }) {
           <SearchDish></SearchDish>
         </div>
         <div className={styles.bottom}>
+          <div>
+          {menus === true ? <VerticalTabs></VerticalTabs> : null }
+          </div>
           <div className={styles.FoodItems}>
             <TabBarOverviewMenu></TabBarOverviewMenu>
             {menus === true ? <FoodItems></FoodItems> : null}
