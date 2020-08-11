@@ -14,7 +14,7 @@ const initialState = {
   entity_id: Number,
   locationRestaurants: "",
   restaurantQuery: "",
-  foodMenus: "",
+  foodMenus: null,
 };
 
 export const ServicesReducer = (state = initialState, action) => {
@@ -49,8 +49,8 @@ export const ServicesReducer = (state = initialState, action) => {
     case SEARCH_MENUS:
       return {
         ...state,
-        foodMenus : action.payload,
-      }  
+        foodMenus: action.payload,
+      };
 
     default:
       return state;

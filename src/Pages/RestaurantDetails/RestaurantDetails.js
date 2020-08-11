@@ -1,20 +1,42 @@
 import React from "react";
+import styles from "./RestaurantDetails.module.scss";
 import Cart from "../../Components/Cart/Cart";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import SearchDish from "../../Components/SearchDish/SearchDish";
 import Navbar from "../../Layout/Navbar/Navbar";
+import FoodItems from "../../Components/FoodItems/FoodItems";
+import TabBarOverviewMenu from "../../Components/TabBarOverviewMenus/TabBarOverviewMenu";
+import RestaurantDish from "../../Components/RestaurantDish/RestaurantDish";
+import { connect } from "react-redux";
 
-function RestaurantDetails() {
+function RestaurantDetails({ menus }) {
   return (
     <>
       <Navbar></Navbar>
 
-      <div>
-        <Cart></Cart>
-        <SearchDish></SearchDish>
+      <div className={styles.container}>
+        <RestaurantDish />
+        <div className={styles.searchDish}>
+          <SearchDish></SearchDish>
+        </div>
+        <div className={styles.bottom}>
+          <div className={styles.FoodItems}>
+            <TabBarOverviewMenu></TabBarOverviewMenu>
+            {menus === true ? <FoodItems></FoodItems> : null}
+          </div>
+          <div className={styles.cart}>
+            <Cart></Cart>
+          </div>
+        </div>
       </div>
     </>
   );
 }
 
-export default RestaurantDetails;
+const matchStateToProps = (state) => {
+  return {
+    menus: state.ui.menus,
+  };
+};
+
+export default connect(matchStateToProps)(RestaurantDetails);
