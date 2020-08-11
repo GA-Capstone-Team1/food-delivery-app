@@ -7,19 +7,19 @@ import RemoveIcon from "@material-ui/icons/Remove";
 function Cart() {
   return (
     <div className={styles.cart}>
-      <Typography variant="h5">Cart</Typography>
+      <Typography variant="h6">Cart</Typography>
       <div className={styles.restaurant}>
-        <Typography variant="h6" color="Primary" component="p">
+        <Typography variant="subtitle1" color="Primary" component="p">
           Dandga Vada
         </Typography>
         <div className={styles.itemContainer}>
           <Typography
             className={styles.dish}
             color="textSecondary"
-            variant="subtitle1"
+            variant="subtitle2"
             component="p"
           >
-            Dandga Vada Dandga Vada Pav Dandga Vada Pav Dandga Vada Pav
+            Dandga Vada Pav
           </Typography>
 
           <div className={styles.addRemoveContainer}>

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { searchDishes } from "../../Redux/Services/Actions";
 
 let FoodItems = ({ searchDishes, foodMenus }) => {
-  let query = "pasta";
+  let query = "cauliflower";
 
   useEffect(() => {
     searchDishes(query);
