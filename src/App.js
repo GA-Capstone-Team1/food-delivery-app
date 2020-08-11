@@ -15,7 +15,9 @@ import LandingPage from "./Pages/landingPage/LandingPage";
 import firebase from "firebase/app";
 import firebaseConfig from "./FirebaseConfig/config";
 import Login from "./Pages/Login/Login";
+import SignUp from "./Pages/Signup/Signup";
 import RestaurantDish from "./Components/RestaurantDish/RestaurantDish";
+import Checkout from "./Components/Checkout/Checkout";
 
 firebase.initializeApp(firebaseConfig);
 
@@ -27,10 +29,12 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/login" component={Login}></Route>
+            <Route exact path="/signup" component={SignUp}></Route>
             <Route exact path="/" component={LandingPage}></Route>
             <Route exact path="/restaurants" component={Restaurants}></Route>
             <Route exact path="/res" component={RestaurantDetails}></Route>
             <Route exact path="/resdish" component={RestaurantDish}></Route>
+            <Route exact path="/checkout" component={Checkout}></Route>
           </Switch>
         </Router>
       </Provider>

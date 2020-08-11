@@ -5,7 +5,7 @@ import {
   RESTAURANT_SEARCH,
   SEARCH_MENUS,
 } from "./ActionTypes";
-import { api, forkifyApi } from "../../Services/api";
+import { api, forkifyApi} from "../../Services/api";
 import axios from "axios";
 
 // filter Restaurants according to search query
@@ -155,6 +155,9 @@ export const getLocationRestaurants = (
       });
   };
 };
+
+ 
+
 
 // get dishesh from forkify
 
