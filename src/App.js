@@ -34,6 +34,7 @@ function App() {
             <Route exact path="/res" component={RestaurantDetails}></Route>
             <Route exact path="/resdish" component={RestaurantDish}></Route>
             <Route exact path="/checkout" component={Checkout}></Route>
+            
           </Switch>
         </Router>
       </Provider>

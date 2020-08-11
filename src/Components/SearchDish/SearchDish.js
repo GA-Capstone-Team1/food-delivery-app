@@ -10,7 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-import "./SearchDish.css";
+import styles from "./SearchDish.module.css";
 
 const GreenCheckbox = withStyles({
   root: {
@@ -53,8 +53,8 @@ export default function SearchDish() {
   };
   const classes = useStyles();
   return (
-    <FormGroup row className="container">
-      <Paper className="space">
+    <FormGroup row className={styles.container}>
+      <Paper className={styles.space}>
         <IconButton className={classes.iconButton} aria-label="search">
           <SearchIcon />
         </IconButton>
@@ -64,7 +64,7 @@ export default function SearchDish() {
           inputProps={{ "aria-label": "search google maps" }}
         />
       </Paper>
-      <Paper className="space">
+      <Paper className={styles.space}>
         <FormControlLabel
           control={
             <GreenCheckbox
@@ -76,7 +76,7 @@ export default function SearchDish() {
           label="Veg"
         />
       </Paper>
-      <Paper className="space">
+      <Paper className={styles.space}>
         <FormControlLabel
           control={
             <Checkbox
