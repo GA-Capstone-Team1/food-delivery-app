@@ -10,7 +10,7 @@
   // border: 1px solid black;
 
   @include Desktop() {
-    max-width: 1204px;
+    max-width: 1024px;
     flex-direction: row;
     flex-wrap: nowrap;
   }

@@ -36,7 +36,8 @@ let FoodItems = ({ searchDishes, foodMenus }) => {
                 </div>
               </div>
               <div className={styles.btnContainer}>
-                <Button variant="outlined" style={{backgroundColor:"rgb(255, 193, 32)", color:'#fff'}} className={styles.btn}>
+
+                <Button variant="outlined" className={styles.btn}>
                   Add
                 </Button>
               </div>

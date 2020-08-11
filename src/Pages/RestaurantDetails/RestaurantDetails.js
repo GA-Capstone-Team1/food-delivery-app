@@ -10,6 +10,7 @@ import RestaurantDish from "../../Components/RestaurantDish/RestaurantDish";
 import { connect } from "react-redux";
 import VerticalTabs from "../../Components/VerticalTab/VerticalTab";
 
+
 function RestaurantDetails({ menus }) {
   return (
     <>
