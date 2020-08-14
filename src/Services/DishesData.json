@@ -1,0 +1,401 @@
+{
+  "pizza": [
+    {
+      "publisher": "101 Cookbooks",
+      "title": "Best Pizza Dough Ever",
+      "source_url": "http://www.101cookbooks.com/archives/001199.html",
+      "recipe_id": "47746",
+      "image_url": "http://forkify-api.herokuapp.com/images/best_pizza_dough_recipe1b20.jpg",
+      "veg": "true",
+      "price": "144"
+    },
+    {
+      "publisher": "The Pioneer Woman",
+      "title": "Deep Dish Fruit Pizza",
+      "source_url": "http://thepioneerwoman.com/cooking/2012/01/fruit-pizza/",
+      "recipe_id": "46956",
+      "image_url": "http://forkify-api.herokuapp.com/images/fruitpizza9a19.jpg",
+      "social_rank": 100,
+      "publisher_url": "http://thepioneerwoman.com",
+      "veg": "true",
+      "price": "158"
+    },
+    {
+      "publisher": "Closet Cooking",
+      "title": "Pizza Dip",
+      "source_url": "http://www.closetcooking.com/2011/03/pizza-dip.html",
+      "recipe_id": "35477",
+      "image_url": "http://forkify-api.herokuapp.com/images/Pizza2BDip2B12B500c4c0a26c.jpg",
+      "social_rank": 99.99999999999994,
+      "publisher_url": "http://closetcooking.com",
+      "veg": "true",
+      "price": "116"
+    },
+    {
+      "publisher": "Closet Cooking",
+      "title": "Cauliflower Pizza Crust (with BBQ Chicken Pizza)",
+      "source_url": "http://www.closetcooking.com/2013/02/cauliflower-pizza-crust-with-bbq.html",
+      "recipe_id": "41470",
+      "image_url": "http://forkify-api.herokuapp.com/images/BBQChickenPizzawithCauliflowerCrust5004699695624ce.jpg",
+      "social_rank": 99.9999999999994,
+      "publisher_url": "http://closetcooking.com",
+      "veg": "false",
+      "price": "100"
+    },
+    {
+      "publisher": "Closet Cooking",
+      "title": "Pizza Quesadillas (aka Pizzadillas)",
+      "source_url": "http://www.closetcooking.com/2012/11/pizza-quesadillas-aka-pizzadillas.html",
+      "recipe_id": "35478",
+      "image_url": "http://forkify-api.herokuapp.com/images/Pizza2BQuesadillas2B2528aka2BPizzadillas25292B5002B834037bf306b.jpg",
+      "social_rank": 99.99999999999835,
+      "publisher_url": "http://closetcooking.com",
+      "veg": "true",
+      "price": "182"
+    },
+    {
+      "publisher": "Two Peas and Their Pod",
+      "title": "Sweet Potato Kale Pizza with Rosemary & Red Onion",
+      "source_url": "http://www.twopeasandtheirpod.com/sweet-potato-kale-pizza-with-rosemary-red-onion/",
+      "recipe_id": "54454",
+      "image_url": "http://forkify-api.herokuapp.com/images/sweetpotatokalepizza2c6db.jpg",
+      "social_rank": 99.9999999991673,
+      "publisher_url": "http://www.twopeasandtheirpod.com",
+      "veg": "true",
+      "price": "160"
+    },
+    {
+      "publisher": "My Baking Addiction",
+      "title": "Pizza Dip",
+      "source_url": "http://www.mybakingaddiction.com/pizza-dip/",
+      "recipe_id": "2ec050",
+      "image_url": "http://forkify-api.herokuapp.com/images/PizzaDip21of14f05.jpg",
+      "social_rank": 99.99999999826605,
+      "publisher_url": "http://www.mybakingaddiction.com",
+      "veg": "true",
+      "price": "190"
+    },
+    {
+      "publisher": "Closet Cooking",
+      "title": "Avocado Breakfast Pizza with Fried Egg",
+      "source_url": "http://www.closetcooking.com/2012/07/avocado-breakfast-pizza-with-fried-egg.html",
+      "recipe_id": "35097",
+      "image_url": "http://forkify-api.herokuapp.com/images/Avocado2Band2BFried2BEgg2BBreakfast2BPizza2B5002B296294dcea8a.jpg",
+      "social_rank": 99.99999990783806,
+      "publisher_url": "http://closetcooking.com",
+      "veg": "false",
+      "price": "125"
+    },
+
+    {
+      "publisher": "The Pioneer Woman",
+      "title": "Pepperoni Pizza Burgers",
+      "source_url": "http://thepioneerwoman.com/cooking/2012/10/pepperoni-pizza-burgers/",
+      "recipe_id": "46895",
+      "image_url": "http://forkify-api.herokuapp.com/images/pizzaburgera5bd.jpg",
+      "social_rank": 99.99999990525365,
+      "publisher_url": "http://thepioneerwoman.com",
+      "veg": "true",
+      "price": "175"
+    },
+    {
+      "publisher": "Closet Cooking",
+      "title": "Thai Chicken Pizza with Sweet Chili Sauce",
+      "source_url": "http://www.closetcooking.com/2012/02/thai-chicken-pizza-with-sweet-chili.html",
+      "recipe_id": "35635",
+      "image_url": "http://forkify-api.herokuapp.com/images/Thai2BChicken2BPizza2Bwith2BSweet2BChili2BSauce2B5002B435581bcf578.jpg",
+      "social_rank": 99.99999990065892,
+      "publisher_url": "http://closetcooking.com",
+      "veg": "false",
+      "price": "180"
+    },
+
+    {
+      "publisher": "Real Simple",
+      "title": "English-Muffin Egg Pizzas",
+      "source_url": "http://www.realsimple.com/food-recipes/browse-all-recipes/english-muffin-egg-pizzas-10000000663044/index.html",
+      "recipe_id": "38812",
+      "image_url": "http://forkify-api.herokuapp.com/images/pizza_300d938bd58.jpg",
+      "social_rank": 99.99999978548222,
+      "publisher_url": "http://realsimple.com",
+      "veg": "false",
+      "price": "115"
+    },
+
+    {
+      "publisher": "The Pioneer Woman",
+      "title": "Grilled Veggie Pizza",
+      "source_url": "http://thepioneerwoman.com/cooking/2011/07/grilled-vegetable-pizza/",
+      "recipe_id": "47011",
+      "image_url": "http://forkify-api.herokuapp.com/images/grilledveggie79bd.jpg",
+      "social_rank": 99.99999947603048,
+      "publisher_url": "http://thepioneerwoman.com",
+      "veg": "true",
+      "price": "170"
+    },
+
+    {
+      "publisher": "Closet Cooking",
+      "title": "Balsamic Strawberry and Chicken Pizza with Sweet Onions and Smoked Bacon",
+      "source_url": "http://www.closetcooking.com/2012/07/balsamic-strawberry-and-chicken-pizza.html",
+      "recipe_id": "35128",
+      "image_url": "http://forkify-api.herokuapp.com/images/Strawberry2BBalsamic2BPizza2Bwith2BChicken252C2BSweet2BOnion2Band2BSmoked2BBacon2B5002B300939d125e2.jpg",
+      "social_rank": 99.99998682928603,
+      "publisher_url": "http://closetcooking.com",
+      "veg": "false",
+      "price": "146"
+    }
+  ],
+  "pasta": [
+    {
+      "publisher": "The Pioneer Woman",
+      "title": "Pasta with Pesto Cream Sauce",
+      "source_url": "http://thepioneerwoman.com/cooking/2011/06/pasta-with-pesto-cream-sauce/",
+      "recipe_id": "47025",
+      "image_url": "http://forkify-api.herokuapp.com/images/pestoa0e7.jpg",
+      "social_rank": 100,
+      "publisher_url": "http://thepioneerwoman.com",
+      "veg": "true",
+      "price": "120"
+    },
+
+    {
+      "publisher": "Two Peas and Their Pod",
+      "title": "Creamy Avocado Pasta",
+      "source_url": "http://www.twopeasandtheirpod.com/creamy-avocado-pasta/",
+      "recipe_id": "54426",
+      "image_url": "http://forkify-api.herokuapp.com/images/creamyavocadopasta607e.jpg",
+      "social_rank": 99.99999999999989,
+      "publisher_url": "http://www.twopeasandtheirpod.com",
+      "veg": "true",
+      "price": "80"
+    },
+
+    {
+      "publisher": "The Pioneer Woman",
+      "title": "Seafood Pasta",
+      "source_url": "http://thepioneerwoman.com/cooking/2012/03/seafood-pasta/",
+      "recipe_id": "46943",
+      "image_url": "http://forkify-api.herokuapp.com/images/seafoodpasta5075.jpg",
+      "social_rank": 99.99999999999329,
+      "publisher_url": "http://thepioneerwoman.com",
+      "veg": "false",
+      "price": "100"
+    },
+    {
+      "publisher": "The Pioneer Woman",
+      "title": "Bowtie Chicken Alfredo",
+      "source_url": "http://thepioneerwoman.com/cooking/2012/12/bowtie-chicken-alfredo/",
+      "recipe_id": "46882",
+      "image_url": "http://forkify-api.herokuapp.com/images/chickenalfredoc9c5.jpg",
+      "social_rank": 99.99999999993057,
+      "publisher_url": "http://thepioneerwoman.com",
+      "veg": "false",
+      "price": "140"
+    },
+
+    {
+      "publisher": "The Pioneer Woman",
+      "title": "Pastor Pasta Carbonara",
+      "source_url": "http://thepioneerwoman.com/cooking/2008/09/cooking-with-ryan-pasta-carbonara/",
+      "recipe_id": "47296",
+      "image_url": "http://forkify-api.herokuapp.com/images/PastaCarbonara061c.jpg",
+      "social_rank": 99.99999999693264,
+      "publisher_url": "http://thepioneerwoman.com",
+      "veg": "true",
+      "price": "125"
+    },
+    {
+      "publisher": "The Pioneer Woman",
+      "title": "Pasta Carbonara",
+      "source_url": "http://thepioneerwoman.com/cooking/2012/05/pasta-carbonara/",
+      "recipe_id": "46922",
+      "image_url": "http://forkify-api.herokuapp.com/images/carbonara2f55.jpg",
+      "social_rank": 99.99999999592087,
+      "publisher_url": "http://thepioneerwoman.com",
+      "veg": "true",
+      "price": "115"
+    },
+
+    {
+      "publisher": "The Pioneer Woman",
+      "title": "Quick and Easy Roasted Red Pepper Pasta",
+      "source_url": "http://thepioneerwoman.com/cooking/2013/05/quick-and-easy-roasted-red-pepper-pasta/",
+      "recipe_id": "c465d3",
+      "image_url": "http://forkify-api.herokuapp.com/images/yum8ee6.jpg",
+      "social_rank": 99.99999996527706,
+      "publisher_url": "http://thepioneerwoman.com",
+      "veg": "true",
+      "price": "160"
+    },
+    {
+      "publisher": "101 Cookbooks",
+      "title": "Winter Pasta",
+      "source_url": "http://www.101cookbooks.com/archives/winter-pasta-recipe.html",
+      "recipe_id": "47991",
+      "image_url": "http://forkify-api.herokuapp.com/images/winter_pasta_recipebee6.jpg",
+      "social_rank": 99.9999999572553,
+      "publisher_url": "http://www.101cookbooks.com",
+      "veg": "true",
+      "price": "125"
+    },
+    {
+      "publisher": "The Pioneer Woman",
+      "title": "Grilled Chicken with Lemon Basil Pasta",
+      "source_url": "http://thepioneerwoman.com/cooking/2010/07/grilled-chicken-with-lemon-basil-pasta/",
+      "recipe_id": "47118",
+      "image_url": "http://forkify-api.herokuapp.com/images/4814287904_bb43e024c9_be8a9.jpg",
+      "social_rank": 99.99999991847115,
+      "publisher_url": "http://thepioneerwoman.com",
+      "veg": "false",
+      "price": "140"
+    },
+
+    {
+      "publisher": "The Pioneer Woman",
+      "title": "Pasta Salad with Tomatoes, Zucchini, and Feta",
+      "source_url": "http://thepioneerwoman.com/cooking/2011/03/pasta-salad-with-tomatoes-zucchini-and-feta/",
+      "recipe_id": "47041",
+      "image_url": "http://forkify-api.herokuapp.com/images/5566512470_9e98939ab3_z2766.jpg",
+      "social_rank": 99.99999855322939,
+      "publisher_url": "http://thepioneerwoman.com",
+      "veg": "true",
+      "price": "105"
+    },
+    {
+      "publisher": "The Pioneer Woman",
+      "title": "Pesto Pasta Salad",
+      "source_url": "http://thepioneerwoman.com/cooking/2013/04/pesto-pasta-salad/",
+      "recipe_id": "f852ec",
+      "image_url": "http://forkify-api.herokuapp.com/images/pestopasta1833.jpg",
+      "social_rank": 99.9999930312073,
+      "publisher_url": "http://thepioneerwoman.com",
+      "veg": "true",
+      "price": "95"
+    },
+    {
+      "publisher": "Two Peas and Their Pod",
+      "title": "Baked Pasta with Spinach and Ricotta",
+      "source_url": "http://www.twopeasandtheirpod.com/baked-pasta-with-spinach-and-ricotta/",
+      "recipe_id": "054a70",
+      "image_url": "http://forkify-api.herokuapp.com/images/SpinachBakedShells53ded.jpg",
+      "social_rank": 99.9999924531229,
+      "publisher_url": "http://www.twopeasandtheirpod.com",
+      "veg": "true",
+      "price": "120"
+    }
+  ],
+  "fries": [
+    {
+      "publisher": "Simply Recipes",
+      "title": "Oven Baked Sweet Potato Fries",
+      "source_url": "http://www.simplyrecipes.com/recipes/oven_baked_sweet_potato_fries/",
+      "recipe_id": "36665",
+      "image_url": "http://forkify-api.herokuapp.com/images/sweetpotatofriesa300x200177a9e27.jpg",
+      "social_rank": 100,
+      "publisher_url": "http://simplyrecipes.com",
+      "price": "60"
+    },
+    {
+      "publisher": "The Pioneer Woman",
+      "title": "Perfect French Fries",
+      "source_url": "http://thepioneerwoman.com/cooking/2012/01/perfect-french-fries/",
+      "recipe_id": "46959",
+      "image_url": "http://forkify-api.herokuapp.com/images/fries4d41.jpg",
+      "social_rank": 99.99999999999984,
+      "publisher_url": "http://thepioneerwoman.com",
+      "price": "65"
+    },
+    {
+      "publisher": "Serious Eats",
+      "title": "Cakespy: Pie Fries",
+      "source_url": "http://www.seriouseats.com/recipes/2010/11/cakespy-pie-fries-recipe.html",
+      "recipe_id": "13020e",
+      "image_url": "http://forkify-api.herokuapp.com/images/11fd31.21.2010piefries.jpg",
+      "social_rank": 99.99999994715034,
+      "publisher_url": "http://www.seriouseats.com/",
+      "price": "60"
+    },
+
+    {
+      "publisher": "Closet Cooking",
+      "title": "Crispy Baked Portobello Mushroom Fries",
+      "source_url": "http://www.closetcooking.com/2012/08/crispy-baked-portobello-mushroom-fries.html",
+      "recipe_id": "35266",
+      "image_url": "http://forkify-api.herokuapp.com/images/Crispy2BBaked2BPortobello2BMushroom2BFries2B5002B528055b36987.jpg",
+      "social_rank": 99.99999616612044,
+      "publisher_url": "http://closetcooking.com",
+      "price": "85"
+    },
+    {
+      "publisher": "Two Peas and Their Pod",
+      "title": "Baked Zucchini Fries",
+      "source_url": "http://www.twopeasandtheirpod.com/baked-zucchini-fries-recipe/",
+      "recipe_id": "54670",
+      "image_url": "http://forkify-api.herokuapp.com/images/4448479444_21d592399be1f4.jpg",
+      "social_rank": 99.99999556830828,
+      "publisher_url": "http://www.twopeasandtheirpod.com",
+      "price": "75"
+    },
+    {
+      "publisher": "All Recipes",
+      "title": "Cottage Fries",
+      "source_url": "http://allrecipes.com/Recipe/Potato-Latkes-I/Detail.aspx",
+      "recipe_id": "25251",
+      "image_url": "http://forkify-api.herokuapp.com/images/3119204282.jpg",
+      "social_rank": 99.99984656357303,
+      "publisher_url": "http://allrecipes.com",
+      "price": "68"
+    }
+  ],
+  "sandwich": [
+    {
+      "recipe_id": 1466249,
+      "title": "Caprese Sandwich",
+      "image_url": "https://spoonacular.com/recipeImages/1466249-312x231.jpg",
+      "imageType": "jpg",
+      "veg": "true",
+      "price": "50"
+    },
+    {
+      "recipe_id": 1117756,
+      "title": "Egg Salad Sandwich",
+      "image_url": "https://spoonacular.com/recipeImages/1117756-312x231.jpg",
+      "imageType": "jpg",
+      "veg": "false",
+      "price": "60"
+    },
+    {
+      "recipe_id": 495009,
+      "title": "Sandwich of Spinach, Caramelized Onions, and Roasted Peppers",
+      "image_url": "https://spoonacular.com/recipeImages/495009-312x231.jpg",
+      "imageType": "jpg",
+      "veg": "true",
+      "price": "55"
+    },
+    {
+      "recipe_id": 1103264,
+      "title": "Avocado Egg Sandwich with Hummus",
+      "image_url": "https://spoonacular.com/recipeImages/1103264-312x231.jpg",
+      "imageType": "jpg",
+      "veg": "false",
+      "price": "70"
+    },
+    {
+      "recipe_id": 645060,
+      "title": "Good-Egg Salad Sandwich",
+      "image_url": "https://spoonacular.com/recipeImages/645060-312x231.jpg",
+      "imageType": "jpg",
+      "veg": "false",
+      "price": "68"
+    },
+    {
+      "recipe_id": 247051,
+      "title": "Grilled Cheese Sandwich with Sauerkraut on Rye",
+      "image_url": "https://spoonacular.com/recipeImages/247051-312x231.jpeg",
+      "imageType": "jpeg",
+      "veg": "true",
+      "price": "55"
+    }
+  ]
+}

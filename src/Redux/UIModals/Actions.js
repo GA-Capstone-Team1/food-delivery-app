@@ -1,4 +1,4 @@
-import { FILTER_BAR, OVERVIEW, MENUS } from "./ActionTypes";
+import { FILTER_BAR, OVERVIEW, MENUS, LOADER } from "./ActionTypes";
 
 export const filterBar = (value) => {
   return {
@@ -17,6 +17,13 @@ export const overview = (value) => {
 export const menus = (value) => {
   return {
     type: MENUS,
+    payload: value,
+  };
+};
+
+export const setloader = (value) => {
+  return {
+    type: LOADER,
     payload: value,
   };
 };

@@ -13,6 +13,8 @@ import RestaurantDetails from "./Pages/RestaurantDetails/RestaurantDetails";
 import { Provider } from "react-redux";
 import LandingPage from "./Pages/landingPage/LandingPage";
 import firebase from "firebase/app";
+import "firebase/database";
+import "firebase/auth";
 import firebaseConfig from "./FirebaseConfig/config";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/Signup/Signup";

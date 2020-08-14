@@ -8,26 +8,32 @@ import { useDispatch, useSelector } from "react-redux";
 // import { setLoader } from "../../Redux/Index";
 import * as yup from "yup";
 import { TextField, Checkbox, Typography, Button } from "@material-ui/core";
-// import {
-//   userDetails,
-//   loginError,
-//   isAuthenticated,
-// } from "../../Redux/Authentication/AuthActions";
 import { useFormik } from "formik";
+import {
+  userDetails,
+  loginError,
+  isAuthenticated,
+} from "../../Redux/Authentication/Actions";
+import { setloader } from "../../Redux/UIModals/Actions";
 
 const Login = () => {
   const [showpassword, setShowpassword] = useState(false);
-  //   const dispatch = useDispatch();
-  //   const loader = useSelector((state) => state.board.loader);
-  //   const error = useSelector((state) => state.auth.logInError);
+  const dispatch = useDispatch();
+  const loader = useSelector((state) => state.ui.loader);
+  const error = useSelector((state) => state.auth.loginError);
+  const email = useSelector((state) => state.auth.email);
+  const uid = useSelector((state) => state.auth.uid);
+
   const history = useHistory();
   const initialValues = {
     email: "",
     password: "",
   };
 
+  console.log(email, uid);
+
   const onSubmit = (values) => {
-    // handleSubmit(values);
+    handleSubmit(values);
   };
 
   const validationSchema = yup.object({
@@ -43,34 +49,35 @@ const Login = () => {
     validationSchema,
   });
 
-  //   const handleSubmit = (values) => {
-  //     console.log("submitted");
-  //     dispatch(setLoader(true));
-  //     firebase
-  //       .auth()
-  //       .signInWithEmailAndPassword(values.email, values.password)
-  //       .then((res) => {
-  //         console.log(res);
-  //         dispatch(
-  //           userDetails(res.user.email, res.user.uid, res.user.displayName)
-  //         );
-  //         dispatch(loginError(""));
-  //         dispatch(setLoader(false));
-  //         dispatch(isAuthenticated(true));
-  //         history.push("/");
-  //       })
-  //       .catch((err) => {
-  //         console.log(err.message);
-  //         dispatch(loginError(err.message));
-  //         dispatch(setLoader(false));
-  //         clearError();
-  //       });
-  //   };
+  const handleSubmit = (values) => {
+    console.log("submitted");
+    dispatch(setloader(true));
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(values.email, values.password)
+      .then((res) => {
+        console.log(res);
+        dispatch(
+          userDetails(res.user.email, res.user.uid, res.user.displayName)
+        );
+        dispatch(loginError(""));
+        dispatch(setloader(false));
+        dispatch(isAuthenticated(true));
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err.message);
+        dispatch(loginError(err.message));
+        dispatch(setloader(false));
+        clearError();
+      });
+  };
 
-  //   function clearError() {
-  //     setTimeout(() => {
-  //       dispatch(loginError(""));
-  //     }, 10000);
+  function clearError() {
+    setTimeout(() => {
+      dispatch(loginError(""));
+    }, 10000);
+  }
 
   return (
     <Fragment>
@@ -84,9 +91,9 @@ const Login = () => {
                 Not a member <Link>Sign In</Link>
               </p>
             </div>
-            {/* {error ? (
+            {error ? (
               <p style={{ color: "red", textAlign: "center" }}>{error}</p>
-            ) : null} */}
+            ) : null}
             <form onSubmit={formik.handleSubmit} className={styles.formGroup}>
               <div className={styles.Emailform}>
                 <TextField
@@ -119,18 +126,19 @@ const Login = () => {
                   value={formik.values.password}
                   onBlur={formik.handleBlur}
                 />
-                {/* {formik.errors.password && formik.touched.password ? (
+                {formik.errors.password && formik.touched.password ? (
                   <div>{formik.errors.password}</div>
-                ) : null} */}
+                ) : null}
               </div>
               <div className={styles.checkContainer}>
                 <Checkbox
                   className={styles.Checkbox}
-                  value="Password"
+                  value={showpassword}
                   color="primary"
                   inputProps={{ "aria-label": "secondary checkbox" }}
                   labelStyle={{ color: "#ffa500" }}
                   iconStyle={{ color: "#ffa500" }}
+                  onClick={() => setShowpassword(!showpassword)}
                 />
                 <Typography className={styles.filterName}>
                   Show Password

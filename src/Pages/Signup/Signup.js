@@ -7,13 +7,12 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { TextField, Button } from "@material-ui/core";
-// import {
-//   userDetails,
-//   signinError,
-//   isAuthenticated,
-// } from "../../Redux/Authentication/AuthActions";
-// import { setLoader } from "../../Redux/Index";
-// import Image from "../../Images/Image.png";
+import {
+  userDetails,
+  signupError,
+  isAuthenticated,
+} from "../../Redux/Authentication/Actions";
+import { setloader } from "../../Redux/UIModals/Actions";
 
 const SignUp = () => {
   const [showpassword, setShowpassword] = useState(false);
@@ -26,11 +25,11 @@ const SignUp = () => {
   };
 
   const history = useHistory();
-  //   const error = useSelector((state) => state.auth.signInError);
+  const error = useSelector((state) => state.auth.signupError);
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
-    // handleSubmit(values);
+    handleSubmit(values);
   };
 
   const validationSchema = yup.object({
@@ -47,38 +46,38 @@ const SignUp = () => {
   });
   console.log("Visited Fields", formik.touched);
 
-  //   const handleSubmit = ({ email, password, name }) => {
-  //     console.log("submitted");
-  //     dispatch(setLoader(true));
+  const handleSubmit = ({ email, password, name }) => {
+    console.log("submitted");
+    dispatch(setloader(true));
 
-  //     firebase
-  //       .auth()
-  //       .createUserWithEmailAndPassword(email, password)
-  //       .then((res) => {
-  //         console.log(res);
-  //         res.user.updateProfile({
-  //           displayName: name,
-  //         });
-  //         dispatch(
-  //           userDetails(res.user.email, res.user.uid, res.user.displayName)
-  //         );
-  //         dispatch(signinError(""));
-  //         dispatch(setLoader(false));
-  //         dispatch(isAuthenticated(true));
-  //         history.replace("/");
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //         dispatch(signinError(err.message));
-  //         clearError();
-  //       });
-  //   };
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((res) => {
+        console.log(res);
+        res.user.updateProfile({
+          displayName: name,
+        });
+        dispatch(
+          userDetails(res.user.email, res.user.uid, res.user.displayName)
+        );
+        dispatch(signupError(""));
+        dispatch(setloader(false));
+        dispatch(isAuthenticated(true));
+        history.replace("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(signupError(err.message));
+        clearError();
+      });
+  };
 
-  //   function clearError() {
-  //     setTimeout(() => {
-  //       dispatch(signinError(""));
-  //     }, 10000);
-  //   }
+  function clearError() {
+    setTimeout(() => {
+      dispatch(signupError(""));
+    }, 10000);
+  }
 
   return (
     <Fragment>
