@@ -9,9 +9,13 @@ import StarRateIcon from "@material-ui/icons/StarRate";
 import Paper from "@material-ui/core/Paper";
 import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
+import { restaurantDetails } from "../../Redux/Services/Actions";
+import { useHistory } from "react-router-dom";
 
-function RecipeReviewCard({ restaurants, restaurantQuery }) {
+function RecipeReviewCard({ restaurants, restaurantQuery, restarantId }) {
   console.log(restaurants.restaurants);
+
+  let history = useHistory();
 
   // if (restaurants) {
   //   restaurants.restaurants.map((value, key) =>
@@ -19,7 +23,10 @@ function RecipeReviewCard({ restaurants, restaurantQuery }) {
   //   );
   // }
 
-  const handleRestaurantClick = (id) => {};
+  const handleRestaurantClick = (id) => {
+    restarantId(id);
+    history.push("/res");
+  };
 
   if (restaurants) {
     return (
@@ -87,7 +94,9 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    restarantId: (id) => dispatch(restaurantDetails(id)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeReviewCard);

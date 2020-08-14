@@ -7,6 +7,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  background-color: white;
 
   @include Desktop() {
     width: 100%;
@@ -18,10 +19,15 @@
   }
 }
 
+.tooltip {
+  background-color: white;
+}
+
 .itemContainer {
   width: 100%;
   display: flex;
   flex-direction: row;
+  padding: 10px 0;
 
   .dish {
     width: 60%;

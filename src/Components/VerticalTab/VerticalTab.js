@@ -1,10 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import { connect } from "react-redux";
+import { selectedMenu } from "../../Redux/Restaurant/Actions";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -43,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
-    display: 'flex',
+    display: "flex",
     height: 224,
   },
   tabs: {
@@ -51,12 +53,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VerticalTabs() {
+function VerticalTabs({ activeMenu }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
+  const values = ["pizza", "pasta", "fries", "sandwich"];
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    activeMenu(values[newValue]);
   };
 
   return (
@@ -69,35 +72,18 @@ export default function VerticalTabs() {
         aria-label="Vertical tabs example"
         className={classes.tabs}
       >
-        <Tab label="Item One"  />
-        <Tab label="Item Two"  />
-        <Tab label="Item Three"  />
-        <Tab label="Item Four"  />
-        <Tab label="Item Five"  />
-        <Tab label="Item Six"  />
-        <Tab label="Item Seven"  />
+        <Tab label="Pizza" />
+        <Tab label="Pasta" />
+        <Tab label="fries" />
+        <Tab label="sandwich" />
       </Tabs>
-      {/* <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel> */}
     </div>
   );
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    activeMenu: (value) => dispatch(selectedMenu(value)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(VerticalTabs);

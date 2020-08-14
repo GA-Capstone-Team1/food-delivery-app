@@ -4,6 +4,7 @@ import {
   GET_LOCATION_RESTAURANTS,
   RESTAURANT_SEARCH,
   SEARCH_MENUS,
+  RESTAURANT_DETAILS,
 } from "./ActionTypes";
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   locationRestaurants: "",
   restaurantQuery: "",
   foodMenus: null,
+  restaurantDetails: null,
 };
 
 export const ServicesReducer = (state = initialState, action) => {
@@ -47,9 +49,17 @@ export const ServicesReducer = (state = initialState, action) => {
       };
 
     case SEARCH_MENUS:
+      console.log(action.payload);
       return {
         ...state,
         foodMenus: action.payload,
+      };
+
+    case RESTAURANT_DETAILS:
+      console.log(action.payload);
+      return {
+        ...state,
+        restaurantDetails: action.payload,
       };
 
     default:

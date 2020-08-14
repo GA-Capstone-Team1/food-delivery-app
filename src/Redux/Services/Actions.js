@@ -4,6 +4,7 @@ import {
   GET_LOCATION_RESTAURANTS,
   RESTAURANT_SEARCH,
   SEARCH_MENUS,
+  RESTAURANT_DETAILS,
 } from "./ActionTypes";
 import { api, forkifyApi } from "../../Services/api";
 import axios from "axios";
@@ -152,6 +153,29 @@ export const getLocationRestaurants = (
           type: GET_LOCATION_RESTAURANTS,
           payload: data.data,
         });
+      });
+  };
+};
+
+//get restaurant details
+
+export const restaurantDetails = (restaurantId) => {
+  return (dispatch) => {
+    axios
+      .get(`${api}restaurant?res_id=${restaurantId}`, {
+        headers: {
+          Accept: "application/json",
+          "user-key": "dae550f2de39692413804f96c793bc96",
+        },
+      })
+      .then(({ data }) =>
+        dispatch({
+          type: RESTAURANT_DETAILS,
+          payload: data,
+        })
+      )
+      .catch((err) => {
+        console.log(err);
       });
   };
 };

@@ -1,65 +1,91 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./FoodItems.module.scss";
 import { Typography, Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import { searchDishes } from "../../Redux/Services/Actions";
+import VerticalTabs from "../VerticalTab/VerticalTab";
+import data from "../../Services/DishesData.json";
+import { foodCart } from "../../Redux/Restaurant/Actions";
+import Cart from "../Cart/Cart";
 
-let FoodItems = ({ searchDishes, foodMenus }) => {
-  let query = "pasta";
+let FoodItems = ({ searchDishes, foodMenus, selectedMenu, addtoCart }) => {
+  // let query = "ice cream";
+  const [menus, setMenus] = useState();
+  let arr = Object.entries(data).filter(([key, value]) => {
+    if (key === selectedMenu) {
+      return value;
+    }
+  });
 
-  useEffect(() => {
-    searchDishes(query);
-  }, [query, searchDishes]);
+  console.log("hello");
 
-  console.log(500 * Math.random());
+  const handleAddCart = (item) => {
+    console.log(item);
+    addtoCart(item);
+  };
 
-  console.log(foodMenus);
+  setTimeout(() => {
+    setMenus(arr[0][1]);
+  }, 0);
+
   return (
-    <>
-      {foodMenus ? (
-        <div className={styles.FoodItemContainer}>
-          {foodMenus.recipes.map((item) => (
-            <div key={item.recipe_id} className={styles.FoodItems}>
-              <div className={styles.left}>
-                <div className={styles.imgContainer}>
-                  <img
-                    className={styles.img}
-                    src={item.image_url}
-                    alt="menu"
-                  ></img>
+    <div className={styles.container}>
+      <div className={styles.verticalTab}>
+        <VerticalTabs></VerticalTabs>
+      </div>
+      {menus ? (
+        <>
+          <div className={styles.FoodItemContainer}>
+            {menus.map((item) => (
+              <div key={item.recipe_id} className={styles.FoodItems}>
+                <div className={styles.left}>
+                  <div className={styles.imgContainer}>
+                    <img
+                      className={styles.img}
+                      src={item.image_url}
+                      alt="menu"
+                    ></img>
+                  </div>
+                  <div className={styles.dish}>
+                    <Typography className={styles.title}>
+                      {item.title}
+                    </Typography>
+                    <Typography className={styles.price}>
+                      {"Rs." + item.price}
+                    </Typography>
+                  </div>
                 </div>
-                <div className={styles.dish}>
-                  <Typography>{item.title}</Typography>
-                  <Typography>
-                    {"Rs." + Math.floor(Math.random() * 80 + 100)}
-                  </Typography>
+                <div className={styles.btnContainer}>
+                  <Button
+                    variant="outlined"
+                    className={styles.btn}
+                    onClick={() => handleAddCart(item)}
+                  >
+                    Add
+                  </Button>
                 </div>
               </div>
-              <div className={styles.btnContainer}>
-
-                <Button variant="outlined" className={styles.btn}>
-                  Add
-                </Button>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       ) : (
         <div>...Loading</div>
       )}
-    </>
+    </div>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
     foodMenus: state.service.foodMenus,
+    selectedMenu: state.restaurant.menu,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     searchDishes: (query) => dispatch(searchDishes(query)),
+    addtoCart: (item) => dispatch(foodCart(item)),
   };
 };
 

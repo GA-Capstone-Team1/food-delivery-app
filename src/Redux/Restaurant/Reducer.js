@@ -1,46 +1,22 @@
-import {
-  GET_CITYID,
-  GET_USER_LOCATION,
-  GET_LOCATION_RESTAURANTS,
-  RESTAURANT_SEARCH,
-} from "./ActionTypes";
+import { SELECTED_MENU, FOOD_CART } from "./ActionTypes";
 
 const initialState = {
-  city: "",
-  cityId: Number,
-  userLocation: "",
-  entity_type: "",
-  entity_id: Number,
-  locationRestaurants: "",
-  restaurantQuery: "",
+  menu: "pizza",
+  cart: "",
+  itemAdded: null,
 };
-export const ServicesReducer = (state = initialState, action) => {
-  console.log(action);
+export const restaurantReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_CITYID:
+    case SELECTED_MENU:
       return {
         ...state,
-        cityId: action.payload,
+        menu: action.payload,
       };
 
-    case GET_USER_LOCATION:
+    case FOOD_CART:
       return {
         ...state,
-        userLocation: action.payload.city_name,
-        entity_type: action.payload.entity_type,
-        entity_id: action.payload.entity_id,
-      };
-
-    case GET_LOCATION_RESTAURANTS:
-      return {
-        ...state,
-        locationRestaurants: action.payload,
-      };
-
-    case RESTAURANT_SEARCH:
-      return {
-        ...state,
-        restaurantQuery: action.payload,
+        cart: [...state.cart, action.payload],
       };
 
     default:

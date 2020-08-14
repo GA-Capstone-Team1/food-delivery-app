@@ -1,3 +1,19 @@
 .nav {
   background-color: #fcbf49;
 }
+.customTooltip {
+  color: white;
+}
+
+.signin {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.signInText {
+  padding-top: 3px;
+  text-decoration: solid;
+  padding-left: 2px;
+}
