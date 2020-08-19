@@ -3,32 +3,61 @@ import styles from "./RestaurantDish.module.scss";
 import Navbar from "../../Layout/Navbar/Navbar";
 import item from "../../images/sandwich.png";
 import { CardMedia, Typography } from "@material-ui/core";
+import Rating from "@material-ui/lab/Rating";
+import { connect } from "react-redux";
 
-function RestaurantDish() {
+function RestaurantDish({ restaurantDetails }) {
+  console.log(restaurantDetails);
   return (
     <>
-      <div className={styles.resdetails}>
-        <div className={styles.logo}>
-          <CardMedia
-            className={styles.media}
-            image={item}
-            title="restaurant logo"
-          ></CardMedia>
-        </div>
-        <div className={styles.resdescription}>
-          <Typography variant="h4">Restaurant Name</Typography>
-          <Typography>Address</Typography>
-          <Typography variant="h6">Food type</Typography>
-          <Typography style={{ color: "#ffc120" }}>
-            Opens in 7 mins 12 noon - 1 pm (today)
+      <div className={styles.logo}>
+        <CardMedia
+          className={styles.media}
+          image={restaurantDetails.featured_image}
+          title="restaurant logo"
+        ></CardMedia>
+      </div>
+      <div className={styles.resdescription}>
+        <Typography variant="h4">{restaurantDetails.name}</Typography>
+        <div className={styles.ratings}>
+          <Typography color="textSecondary">User Ratings:</Typography>
+          <Rating
+            name="half-rating"
+            color={`#${restaurantDetails.user_rating.rating_color}`}
+            value={restaurantDetails.user_rating.aggregate_rating}
+            precision={0.5}
+            readOnly
+          ></Rating>
+          <Typography>
+            {restaurantDetails.user_rating.aggregate_rating}
           </Typography>
         </div>
-        <div className={styles.resoffer}>
-          <CardMedia className={styles.offer}></CardMedia>
-        </div>
+
+        <Typography variant="subtitle" className={styles.cuisines}>
+          {restaurantDetails.cuisines}
+        </Typography>
+        <Typography
+          variant="subtitle2"
+          color="textSecondary"
+          className={styles.address}
+        >
+          {restaurantDetails.location.address}
+        </Typography>
+        <Typography style={{ color: "#ffc120" }}>
+          {restaurantDetails.timings}
+        </Typography>
+      </div>
+      <div className={styles.resoffer}>
+        <CardMedia className={styles.offer}></CardMedia>
       </div>
     </>
   );
 }
 
-export default RestaurantDish;
+const mapStateToProps = (state) => {
+  return {
+    restaurantDetails: state.service.restaurantDetails,
+  };
+};
+
+export default connect(mapStateToProps)(RestaurantDish);

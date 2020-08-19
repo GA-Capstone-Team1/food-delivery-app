@@ -1,5 +1,4 @@
-export const SELECTED_CUISINE = "SELECTED_CUISINE";
-export const SORTBY = "GET_USER_LOCATION";
-export const PEFERENCE = "PEFERENCE";
 export const SELECTED_MENU = "SELECTED_MENU";
 export const FOOD_CART = "FOOD_CART";
+export const INCREMENT_ITEM = "INCREMENT_ITEM";
+export const DECREMENT_ITEM = "DECREMENT_ITEM";

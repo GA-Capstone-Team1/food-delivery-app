@@ -9,7 +9,6 @@ import { foodCart } from "../../Redux/Restaurant/Actions";
 import Cart from "../Cart/Cart";
 
 let FoodItems = ({ searchDishes, foodMenus, selectedMenu, addtoCart }) => {
-  // let query = "ice cream";
   const [menus, setMenus] = useState();
   let arr = Object.entries(data).filter(([key, value]) => {
     if (key === selectedMenu) {
@@ -20,8 +19,14 @@ let FoodItems = ({ searchDishes, foodMenus, selectedMenu, addtoCart }) => {
   console.log("hello");
 
   const handleAddCart = (item) => {
-    console.log(item);
-    addtoCart(item);
+    console.log(parseInt(item.price), item.price);
+    addtoCart(
+      item.recipe_id,
+      item.title,
+      parseInt(item.price),
+      1,
+      parseInt(item.price)
+    );
   };
 
   setTimeout(() => {
@@ -30,9 +35,6 @@ let FoodItems = ({ searchDishes, foodMenus, selectedMenu, addtoCart }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.verticalTab}>
-        <VerticalTabs></VerticalTabs>
-      </div>
       {menus ? (
         <>
           <div className={styles.FoodItemContainer}>
@@ -85,7 +87,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     searchDishes: (query) => dispatch(searchDishes(query)),
-    addtoCart: (item) => dispatch(foodCart(item)),
+    addtoCart: (id, title, price, items, tprice) =>
+      dispatch(foodCart(id, title, price, items, tprice)),
   };
 };
 
