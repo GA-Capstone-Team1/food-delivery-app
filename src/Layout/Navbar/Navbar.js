@@ -18,8 +18,9 @@ import { CardMedia, Tooltip } from "@material-ui/core";
 import Cart from "../../Components/Cart/Cart";
 import Tippy from "@tippy.js/react";
 import "tippy.js/dist/tippy.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { isAuthenticated } from "../../Redux/Authentication/Actions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Navbar() {
   const history = useHistory();
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -47,6 +49,10 @@ function Navbar() {
   console.log(userName, authenticated);
   const handleSignIn = () => {
     history.push("/signup");
+  };
+
+  const handleLogout = () => {
+    dispatch(isAuthenticated(false));
   };
 
   const handleChange = (event) => {
@@ -133,7 +139,7 @@ function Navbar() {
                 >
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                   <MenuItem onClick={handleClose}>Orders</MenuItem>
-                  <MenuItem onClick={handleClose}>Logout</MenuItem>
+                  <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
                 </Menu>
               </>
             ) : (

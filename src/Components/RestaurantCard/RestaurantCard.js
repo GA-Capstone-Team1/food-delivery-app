@@ -24,8 +24,7 @@ function RecipeReviewCard({ restaurants, restaurantQuery, restarantId }) {
   // }
 
   const handleRestaurantClick = (id) => {
-    restarantId(id);
-    history.push("/res");
+    history.push(`/restaurants/restaurant/${id}`);
   };
 
   if (restaurants) {

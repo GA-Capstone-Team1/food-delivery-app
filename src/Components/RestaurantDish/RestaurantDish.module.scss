@@ -1,26 +1,9 @@
 @import "../../SCSS/Mixins";
 
-.resdetails {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  margin: 0 auto;
-  margin: 25px 0;
-  position: static;
-  // border: 1px solid black;
-
-  @include Desktop() {
-    max-width: 1024px;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-}
 .logo {
   flex-basis: 30%;
   flex-wrap: wrap;
-  // padding: 15px;
-  // border: 1px solid red;
-  justify-content: center;
+  justify-content: start;
 }
 .media {
   height: 180px;
@@ -28,17 +11,15 @@
 .resdescription {
   flex-basis: 40%;
   padding: 20px;
-  padding-top: 40px;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   position: sticky;
   top: 0;
-  // border: 1px solid green;
 }
 .resoffer {
   flex-basis: 30%;
   padding: 15px;
-  //   border: 1px solid orange;
 }
 .offer {
   display: none;
@@ -48,4 +29,19 @@
     border: 1px solid black;
     height: 180px;
   }
+}
+
+.ratings {
+  width: 250px;
+
+  display: flex;
+  flex-direction: row;
+  margin: 5px 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cuisines,
+.address {
+  padding: 5px 0;
 }

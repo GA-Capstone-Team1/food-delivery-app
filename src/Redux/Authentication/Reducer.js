@@ -19,7 +19,7 @@ export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case AUTHENTICATED:
       return {
-        authenticated: true,
+        authenticated: action.payload,
       };
 
     case USER_DETAILS:

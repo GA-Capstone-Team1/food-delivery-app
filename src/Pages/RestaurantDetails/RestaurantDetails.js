@@ -12,14 +12,20 @@ import VerticalTabs from "../../Components/VerticalTab/VerticalTab";
 import VisibilitySensor from "react-visibility-sensor";
 import { CardMedia, Typography } from "@material-ui/core";
 import item from "../../images/sandwich.png";
+import RestaurantDetailsBottom from "../../Components/RestaurantDetailsBottom/RestaurantDetailsBottom";
+import { useHistory, useParams } from "react-router-dom";
+import { restaurantDetails } from "../../Redux/Services/Actions";
 
-let RestaurantDetails = ({ menus, restaurantDetails, cart }) => {
+let RestaurantDetails = ({ menus, restaurantDetails, cart, restarantId }) => {
   const [visible, setVisible] = useState(false);
   let topref = useRef();
 
+  const params = useParams();
+  console.log(params);
+
   useEffect(() => {
-    console.log(cart);
-  }, [cart]);
+    restarantId(params.resId);
+  }, []);
 
   console.log(visible);
 
@@ -33,42 +39,23 @@ let RestaurantDetails = ({ menus, restaurantDetails, cart }) => {
       {restaurantDetails ? (
         <div className={styles.container}>
           <div className={styles.resdetails}>
-            <div className={styles.logo}>
-              <CardMedia
-                className={styles.media}
-                image={restaurantDetails.featured_image}
-                title="restaurant logo"
-              ></CardMedia>
-            </div>
-            <div className={styles.resdescription}>
-              <Typography variant="h4">{restaurantDetails.name}</Typography>
-              <Typography>{restaurantDetails.location.address}</Typography>
-              <Typography variant="h6">{restaurantDetails.cuisines}</Typography>
-
-              <Typography style={{ color: "#ffc120" }}>
-                {restaurantDetails.timings}
-              </Typography>
-            </div>
-            {restaurantDetails.offers.length !== 0 ? (
-              <div className={styles.resoffer}>
-                <CardMedia className={styles.offer}></CardMedia>
-              </div>
-            ) : null}
+            <RestaurantDish></RestaurantDish>
           </div>
 
           <div className={styles.searchDish}>
             <SearchDish></SearchDish>
           </div>
           <div className={styles.bottom}>
-            <div className={styles.FoodItems}>
+            <div className={styles.FoodItemsContainer}>
               <div className={styles.tab}>
                 <TabBarOverviewMenu></TabBarOverviewMenu>
               </div>
-              {menus === true ? (
-                <div className={styles.items}>
-                  <FoodItems></FoodItems>
-                </div>
-              ) : null}
+              <div className={styles.verticalTab}>
+                <VerticalTabs></VerticalTabs>
+              </div>
+              <div className={styles.items}>
+                <FoodItems></FoodItems>
+              </div>
             </div>
             <div className={styles.cart}>
               <Typography variant="h6">Cart</Typography>
@@ -91,8 +78,15 @@ const matchStateToProps = (state) => {
     cart: state.restaurant.cart,
   };
 };
-
-export default connect(matchStateToProps)(RestaurantDetails);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    restarantId: (id) => dispatch(restaurantDetails(id)),
+  };
+};
+export default connect(
+  matchStateToProps,
+  mapDispatchToProps
+)(RestaurantDetails);
 
 // offsetTop: 89
 // offsetLeft: 0

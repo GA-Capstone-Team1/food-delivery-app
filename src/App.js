@@ -20,6 +20,7 @@ import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/Signup/Signup";
 import RestaurantDish from "./Components/RestaurantDish/RestaurantDish";
 import Checkout from "./Components/Checkout/Checkout";
+import ProtectedRoute from "./Components/Authentication/ProtectedRoute";
 
 firebase.initializeApp(firebaseConfig);
 
@@ -34,9 +35,15 @@ function App() {
             <Route exact path="/signup" component={SignUp}></Route>
             <Route exact path="/" component={LandingPage}></Route>
             <Route exact path="/restaurants" component={Restaurants}></Route>
-            <Route exact path="/res" component={RestaurantDetails}></Route>
-            <Route exact path="/resdish" component={RestaurantDish}></Route>
-            <Route exact path="/checkout" component={Checkout}></Route>
+            <Route
+              exact
+              path="/restaurants/restaurant/:resId"
+              component={RestaurantDetails}
+            ></Route>
+            <ProtectedRoute
+              path="/checkout"
+              component={Checkout}
+            ></ProtectedRoute>
           </Switch>
         </Router>
       </Provider>
