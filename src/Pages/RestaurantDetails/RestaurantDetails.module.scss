@@ -2,7 +2,7 @@
 
 .container {
   @include Desktop() {
-    max-width: 1250px;
+    max-width: 1440px;
     margin: 0 auto;
   }
 }
@@ -10,7 +10,8 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  margin: 25px 0;
+  margin: 15px 0;
+  height: fit-content;
 
   @include Desktop() {
     flex-direction: row;
@@ -29,40 +30,86 @@
   justify-content: space-between;
   flex-wrap: nowrap;
 }
-.searchDish {
-  position: sticky;
-  top: 300px;
-}
+
 .FoodItemsContainer {
-  width: 70%;
-  display: grid;
-  grid-template-columns: 20% 80%;
-  grid-template-rows: 50px auto;
-  grid-template-areas:
-    "tab tab"
-    "verticalTab menus";
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   height: auto;
   z-index: 0;
 
-  .tab {
-    grid-area: tab;
-    background-color: white;
-    position: sticky;
-    top: 250px;
-    z-index: 11;
+  @include Desktop() {
+    width: 70%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 50px auto;
+    grid-template-areas:
+      "tab tab"
+      "verticalTab menus";
+    height: auto;
+    z-index: 0;
   }
 
-  .verticalTab {
-    grid-area: verticalTab;
+  .tab {
+    width: 100%;
     position: sticky;
+    top: 0px;
+    background-color: rgb(253, 253, 253);
+    z-index: 11;
+    padding: 10px 0;
+
+    @include Desktop() {
+      grid-area: tab;
+      background-color: white;
+      position: sticky;
+      top: 250px;
+      z-index: 11;
+    }
+  }
+  .menus {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #ffa500;
+    position: fixed;
+    bottom: 0px;
+    z-index: 50;
+    background-color: #413319;
+    margin: 15px;
+    padding: 5px;
+    border-radius: 15px;
+    right: 0;
+    z-index: 5;
+  }
+  .verticalTabMob {
+    position: fixed;
+    bottom: 80px;
+    right: 0;
     height: fit-content;
-    top: 300px;
+    z-index: 8;
+  }
+  .verticalTab {
+    display: none;
+    position: sticky;
+    bottom: 0;
+    z-index: 12;
+    height: fit-content;
+
+    @include Desktop() {
+      display: block;
+      grid-area: verticalTab;
+      position: sticky;
+      height: fit-content;
+      top: 300px;
+    }
   }
 
   .items {
     grid-area: menus;
     position: sticky;
     top: 450px;
+    display: flex;
+    flex-direction: row;
   }
 }
 
@@ -118,13 +165,15 @@
 // }
 
 .searchDish {
-  margin: 15px;
-  position: sticky;
-  top: 180px;
-  z-index: 10;
-  width: 70%;
-  height: fit-content;
-  background-color: white;
+  @include Desktop() {
+    margin: 15px;
+    position: sticky;
+    top: 180px;
+    z-index: 10;
+    width: 70%;
+    height: fit-content;
+    background-color: white;
+  }
 }
 
 // .bottom {

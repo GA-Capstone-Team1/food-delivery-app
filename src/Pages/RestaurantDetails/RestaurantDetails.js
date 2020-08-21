@@ -1,7 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from "./RestaurantDetails.module.scss";
-import Cart from "../../Components/Cart/Cart";
-import SearchBar from "../../Components/SearchBar/SearchBar";
+import Cart from "../../Components/RestaurantCart/Cart";
 import SearchDish from "../../Components/SearchDish/SearchDish";
 import Navbar from "../../Layout/Navbar/Navbar";
 import FoodItems from "../../Components/FoodItems/FoodItems";
@@ -9,28 +8,29 @@ import TabBarOverviewMenu from "../../Components/TabBarOverviewMenus/TabBarOverv
 import RestaurantDish from "../../Components/RestaurantDish/RestaurantDish";
 import { connect } from "react-redux";
 import VerticalTabs from "../../Components/VerticalTab/VerticalTab";
-import VisibilitySensor from "react-visibility-sensor";
-import { CardMedia, Typography } from "@material-ui/core";
-import item from "../../images/sandwich.png";
-import RestaurantDetailsBottom from "../../Components/RestaurantDetailsBottom/RestaurantDetailsBottom";
-import { useHistory, useParams } from "react-router-dom";
+import { Typography, Button } from "@material-ui/core";
+import { useParams } from "react-router-dom";
 import { restaurantDetails } from "../../Redux/Services/Actions";
+import TuneIcon from "@material-ui/icons/Tune";
+import { foodMenus } from "../../Redux/UIModals/Actions";
 
-let RestaurantDetails = ({ menus, restaurantDetails, cart, restarantId }) => {
-  const [visible, setVisible] = useState(false);
-  let topref = useRef();
-
+let RestaurantDetails = ({
+  foodMenus,
+  setFoodMenus,
+  menus,
+  restaurantDetails,
+  cart,
+  restarantId,
+}) => {
   const params = useParams();
   console.log(params);
 
   useEffect(() => {
     restarantId(params.resId);
-  }, []);
+  }, [params.resId, restarantId]);
 
-  console.log(visible);
-
-  const handleVisibility = (e) => {
-    setVisible(e);
+  const handlemenus = () => {
+    setFoodMenus();
   };
 
   return (
@@ -50,12 +50,29 @@ let RestaurantDetails = ({ menus, restaurantDetails, cart, restarantId }) => {
               <div className={styles.tab}>
                 <TabBarOverviewMenu></TabBarOverviewMenu>
               </div>
-              <div className={styles.verticalTab}>
-                <VerticalTabs></VerticalTabs>
-              </div>
-              <div className={styles.items}>
-                <FoodItems></FoodItems>
-              </div>
+
+              {menus === true ? (
+                <>
+                  <div className={styles.menus} onClick={() => handlemenus()}>
+                    <TuneIcon />
+                    <Button>Menus</Button>
+                  </div>
+                  {foodMenus === true ? (
+                    <div className={styles.verticalTabMob}>
+                      <VerticalTabs></VerticalTabs>
+                    </div>
+                  ) : null}
+                  <div className={styles.verticalTab}>
+                    <VerticalTabs></VerticalTabs>
+                  </div>
+
+                  <div className={styles.items}>
+                    <FoodItems></FoodItems>
+                  </div>
+                </>
+              ) : (
+                <div> </div>
+              )}
             </div>
             <div className={styles.cart}>
               <Typography variant="h6">Cart</Typography>
@@ -76,11 +93,13 @@ const matchStateToProps = (state) => {
     menus: state.ui.menus,
     restaurantDetails: state.service.restaurantDetails,
     cart: state.restaurant.cart,
+    foodMenus: state.ui.foodMenus,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     restarantId: (id) => dispatch(restaurantDetails(id)),
+    setFoodMenus: () => dispatch(foodMenus()),
   };
 };
 export default connect(

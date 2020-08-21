@@ -5,18 +5,15 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ShoppingCartRoundedIcon from "@material-ui/icons/ShoppingCartRounded";
 //import Switch from '@material-ui/core/Switch';
 //import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import logo from "../../images/reslogo2.png";
 import { CardMedia, Tooltip } from "@material-ui/core";
-import Cart from "../../Components/Cart/Cart";
-import Tippy from "@tippy.js/react";
+import Cart from "../../Components/RestaurantCart/Cart";
 import "tippy.js/dist/tippy.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -37,7 +34,6 @@ function Navbar() {
   const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -51,12 +47,11 @@ function Navbar() {
     history.push("/signup");
   };
 
+  const handleLogo = () => {
+    history.push("/");
+  };
   const handleLogout = () => {
     dispatch(isAuthenticated(false));
-  };
-
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
   };
 
   const handleMenu = (event) => {
@@ -67,6 +62,15 @@ function Navbar() {
     setAnchorEl(null);
   };
 
+  const handleCart = () => {
+    history.push("/cart");
+  };
+
+  let name;
+  if (authenticated === true) {
+    name = userName.split(" ")[0];
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{ backgroundColor: "#ffc120" }}>
@@ -76,6 +80,7 @@ function Navbar() {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
+            onClick={() => handleLogo()}
           >
             <CardMedia image={logo}></CardMedia>
             <Typography>OrderNow</Typography>
@@ -101,6 +106,7 @@ function Navbar() {
                 color="inherit"
                 aria-label="menu"
                 style={{ marginRight: "5px" }}
+                onClick={() => handleCart()}
               >
                 <ShoppingCartRoundedIcon />
                 <Typography className={styles.signInText}>Cart</Typography>
@@ -117,9 +123,7 @@ function Navbar() {
                   style={{ marginLeft: "0px" }}
                 >
                   <AccountCircle />
-                  <Typography className={styles.signInText}>
-                    {userName}
-                  </Typography>
+                  <Typography className={styles.signInText}>{name}</Typography>
                 </IconButton>
 
                 <Menu

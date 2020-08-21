@@ -36,7 +36,19 @@
   .Emailform,
   .Usernameform {
     width: 100%;
-    margin: 10px 0;
+    margin-bottom: 15px;
+  }
+  .emailInput {
+    width: 100%;
+  }
+
+  .PasswordForm {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .passInput {
+    width: 100%;
   }
 
   .RewritePasswordForm {
@@ -106,4 +118,8 @@
     padding-right: 5px;
     color: #ffa500;
   }
+}
+
+.error {
+  color: rgb(255, 61, 61);
 }

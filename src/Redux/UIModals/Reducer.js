@@ -1,9 +1,10 @@
-import { FILTER_BAR, OVERVIEW, MENUS } from "./ActionTypes";
+import { FILTER_BAR, OVERVIEW, MENUS, FOOD_MENUS } from "./ActionTypes";
 
 const initialState = {
   filterBar: false,
   overview: false,
   menus: true,
+  foodMenus: false,
 };
 export const UiReducer = (state = initialState, action) => {
   console.log(action);
@@ -25,6 +26,12 @@ export const UiReducer = (state = initialState, action) => {
         ...state,
         menus: true,
         overview: false,
+      };
+
+    case FOOD_MENUS:
+      return {
+        ...state,
+        foodMenus: !state.foodMenus,
       };
 
     default:

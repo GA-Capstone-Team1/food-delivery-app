@@ -6,6 +6,7 @@ import {
 } from "./ActionTypes";
 
 export const userDetails = (email, uid, name) => {
+  console.log(name);
   return {
     type: USER_DETAILS,
     payload: { email, uid, name },

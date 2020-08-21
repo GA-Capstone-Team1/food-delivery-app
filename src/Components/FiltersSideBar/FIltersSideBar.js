@@ -15,7 +15,6 @@ const FiltersSideBar = ({
 }) => {
   let [selectedCuisine, setSelectedCuisine] = useState();
   let [sortBy, setSortBy] = useState();
-  let [preference, setPreference] = useState();
 
   if (filterBar === true) {
     var width = "500px";
@@ -47,7 +46,6 @@ const FiltersSideBar = ({
 
     // getLocationRestaurants(entityId, entityType, e.target.innerHTML, sort);
   };
-  const handlePrference = (e) => {};
 
   console.log(selectedCuisine);
 

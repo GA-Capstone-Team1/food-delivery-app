@@ -3,9 +3,7 @@ import styles from "./Login.module.scss";
 import { Link, useHistory } from "react-router-dom";
 import firebase from "firebase/app";
 import NavBar from "../../Layout/Navbar/Navbar";
-// import Loader from "../../Components/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
-// import { setLoader } from "../../Redux/Index";
 import * as yup from "yup";
 import { TextField, Checkbox, Typography, Button } from "@material-ui/core";
 import { useFormik } from "formik";
@@ -19,7 +17,7 @@ import { setloader } from "../../Redux/UIModals/Actions";
 const Login = () => {
   const [showpassword, setShowpassword] = useState(false);
   const dispatch = useDispatch();
-  const loader = useSelector((state) => state.ui.loader);
+  // const loader = useSelector((state) => state.ui.loader);
   const error = useSelector((state) => state.auth.loginError);
   const email = useSelector((state) => state.auth.email);
   const uid = useSelector((state) => state.auth.uid);
@@ -79,6 +77,10 @@ const Login = () => {
     }, 10000);
   }
 
+  const handleSignup = () => {
+    history.push("/signup");
+  };
+
   return (
     <Fragment>
       <NavBar></NavBar>
@@ -88,7 +90,7 @@ const Login = () => {
             <div>
               <p className={styles.text}> Log In </p>
               <p className={styles.already}>
-                Not a member <Link>Sign In</Link>
+                Not a member <Link onClick={() => handleSignup()}>Sign In</Link>
               </p>
             </div>
             {error ? (
@@ -97,37 +99,53 @@ const Login = () => {
             <form onSubmit={formik.handleSubmit} className={styles.formGroup}>
               <div className={styles.Emailform}>
                 <TextField
-                  className={styles.Emailform}
+                  className={styles.emailInput}
                   type="email"
                   name="email"
                   id="email"
                   label="Email"
                   variant="outlined"
-                  style={{ backgroundColor: "#d1d1d1" }}
+                  style={
+                    formik.errors.email && formik.touched.email
+                      ? {
+                          border: "2px solid rgb(255, 61, 61)",
+                          borderRadius: "10px",
+                          color: "rgb(255, 61, 61)",
+                        }
+                      : { backgroundColor: "#d1d1d1" }
+                  }
                   onChange={formik.handleChange}
                   value={formik.values.email}
                   onBlur={formik.handleBlur}
                 />
                 {formik.errors.email && formik.touched.email ? (
-                  <div>{formik.errors.email}</div>
+                  <div className={styles.error}>{formik.errors.email}</div>
                 ) : null}
               </div>
 
-              <div className={styles.RewritePasswordForm}>
+              <div className={styles.PasswordForm}>
                 <TextField
-                  className={styles.Usernameform}
+                  className={styles.passInput}
                   type={showpassword === true ? "text" : "password"}
                   name="password"
                   id="password"
                   label="Password"
                   variant="outlined"
-                  style={{ backgroundColor: "#d1d1d1" }}
+                  style={
+                    formik.errors.password && formik.touched.password
+                      ? {
+                          border: "2px solid rgb(255, 61, 61)",
+                          borderRadius: "10px",
+                          color: "rgb(255, 61, 61)",
+                        }
+                      : { backgroundColor: "#d1d1d1" }
+                  }
                   onChange={formik.handleChange}
                   value={formik.values.password}
                   onBlur={formik.handleBlur}
                 />
                 {formik.errors.password && formik.touched.password ? (
-                  <div>{formik.errors.password}</div>
+                  <div className={styles.error}>{formik.errors.password}</div>
                 ) : null}
               </div>
               <div className={styles.checkContainer}>

@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./FoodItems.module.scss";
 import { Typography, Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import { searchDishes } from "../../Redux/Services/Actions";
-import VerticalTabs from "../VerticalTab/VerticalTab";
 import data from "../../Services/DishesData.json";
 import { foodCart } from "../../Redux/Restaurant/Actions";
-import Cart from "../Cart/Cart";
 
 let FoodItems = ({ searchDishes, foodMenus, selectedMenu, addtoCart }) => {
   const [menus, setMenus] = useState();
   let arr = Object.entries(data).filter(([key, value]) => {
+    let val;
     if (key === selectedMenu) {
-      return value;
+      val = value;
     }
+
+    return val;
   });
 
   console.log("hello");
