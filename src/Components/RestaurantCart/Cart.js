@@ -22,7 +22,21 @@ function Cart({ cartItems, restaurantDetails }) {
   };
 
   const handleDecrement = (id) => {
-    dispatch(decrementItem(id));
+    let newCartItems = cartItems.filter((item) => {
+      if (item.recipe_id === id) {
+        if (item.items !== 1) {
+          item.items--;
+          item.totalPrice = item.totalPrice - item.basePrice;
+          return item;
+        } else {
+          return null;
+        }
+      } else {
+        return item;
+      }
+    });
+
+    dispatch(decrementItem(newCartItems));
   };
   let calcTotalAmount = () => {
     let total = 0;

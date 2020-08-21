@@ -40,16 +40,7 @@ export const restaurantReducer = (state = initialState, action) => {
     case DECREMENT_ITEM:
       return {
         ...state,
-        cart: state.cart.filter((item) => {
-          if (item.recipe_id === action.payload) {
-            if (item.items !== 1) {
-              item.items--;
-              item.totalPrice = item.totalPrice - item.basePrice;
-            }
-          }
-
-          return item;
-        }),
+        cart: action.payload,
       };
 
     default:
