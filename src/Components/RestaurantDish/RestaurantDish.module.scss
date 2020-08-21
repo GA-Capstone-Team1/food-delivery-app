@@ -4,6 +4,12 @@
   flex-basis: 30%;
   flex-wrap: wrap;
   justify-content: start;
+
+  @include Desktop() {
+    flex-basis: 30%;
+    flex-wrap: wrap;
+    justify-content: start;
+  }
 }
 .media {
   height: 180px;
@@ -14,8 +20,6 @@
   padding-top: 10px;
   display: flex;
   flex-direction: column;
-  position: sticky;
-  top: 0;
 }
 .resoffer {
   flex-basis: 30%;
@@ -25,7 +29,6 @@
   display: none;
   @include Desktop() {
     display: block;
-
     border: 1px solid black;
     height: 180px;
   }

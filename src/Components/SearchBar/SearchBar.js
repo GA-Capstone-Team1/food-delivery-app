@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useState } from "react";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import MyLocationIcon from "@material-ui/icons/MyLocation";
-import TuneIcon from "@material-ui/icons/Tune";
 import styles from "./SearchBar.module.scss";
-import { Button, Typography } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import {
   getCityId,
@@ -29,7 +27,6 @@ function SearchBar({
 }) {
   let history = useHistory();
   let [res, setRes] = useState("");
-  let loc = userLocation;
 
   const searchLocation = () => {
     if (navigator.geolocation) {
@@ -58,16 +55,6 @@ function SearchBar({
   };
 
   const handleRestaurantName = (e) => {
-    // let restaurant = e.target.value;
-    // if (timeout) {
-    //   console.log(timeout);
-    //   clearTimeout(timeout);
-    //   console.log(timeout);
-    // }
-    // console.log(timeout);
-    // timeout = setTimeout(() => {
-    //   getLocationRestaurants(entityId, entityType, restaurant);
-    // }, 1000);
     setRes(e.target.value);
   };
 
@@ -85,11 +72,6 @@ function SearchBar({
     }, 1000);
   };
 
-  const opensearch = () => {
-    console.log("clicked");
-  };
-
-  const toggleFilter = () => {};
   console.log(history.location.pathname);
   return (
     <div

@@ -3,7 +3,6 @@ import styles from "./Restaurants.module.scss";
 import FiltersSideBar from "../../Components/FiltersSideBar/FIltersSideBar";
 import Card from "../../Components/RestaurantCard/RestaurantCard";
 import SearchBar from "../../Components/SearchBar/SearchBar";
-import SearchIcon from "@material-ui/icons/Search";
 import TuneIcon from "@material-ui/icons/Tune";
 import { Typography, Button } from "@material-ui/core";
 import { connect } from "react-redux";

@@ -45,11 +45,10 @@ export const restaurantReducer = (state = initialState, action) => {
             if (item.items !== 1) {
               item.items--;
               item.totalPrice = item.totalPrice - item.basePrice;
-              return item;
             }
-          } else {
-            return item;
           }
+
+          return item;
         }),
       };
 

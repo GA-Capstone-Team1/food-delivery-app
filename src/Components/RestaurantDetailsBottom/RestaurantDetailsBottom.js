@@ -4,7 +4,7 @@ import TabBarOverviewMenu from "../TabBarOverviewMenus/TabBarOverviewMenu";
 import VerticalTab from "../VerticalTab/VerticalTab";
 import FoodItems from "../FoodItems/FoodItems";
 import { Typography } from "@material-ui/core";
-import Cart from "../Cart/Cart";
+import Cart from "../RestaurantCart/Cart";
 
 let RestaurantDetailsBottom = () => {
   return (

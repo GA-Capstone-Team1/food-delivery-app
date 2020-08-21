@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import styles from "./Signup.module.scss";
 import { Link, useHistory } from "react-router-dom";
 import firebase from "firebase/app";
@@ -15,8 +15,6 @@ import {
 import { setloader } from "../../Redux/UIModals/Actions";
 
 const SignUp = () => {
-  const [showpassword, setShowpassword] = useState(false);
-
   const initialValues = {
     email: "",
     name: "",
@@ -33,10 +31,13 @@ const SignUp = () => {
   };
 
   const validationSchema = yup.object({
-    name: yup.string().required("required"),
-    email: yup.string().email("Invalid email format").required("required"),
-    password: yup.string().required("required"),
-    reEnterPassword: yup.string().required("required"),
+    name: yup.string().required("Username Required"),
+    email: yup
+      .string()
+      .email("Invalid email format")
+      .required("Email Required"),
+    password: yup.string().required("Password Required"),
+    reEnterPassword: yup.string().required("Password Required"),
   });
 
   const formik = useFormik({
@@ -79,6 +80,17 @@ const SignUp = () => {
     }, 10000);
   }
 
+  if (
+    formik.touched.reEnterPassword &&
+    formik.values.password !== formik.values.reEnterPassword
+  ) {
+    formik.errors.reEnterPassword = "Password dosen't match";
+  }
+
+  const handleLogin = () => {
+    history.push("/login");
+  };
+
   return (
     <Fragment>
       <NavBar></NavBar>
@@ -86,83 +98,118 @@ const SignUp = () => {
         <div className={styles.signupPage}>
           <div className={styles.formContainer}>
             <div className={styles.headContainer}>
-              <p className={styles.text}> Sign In </p>
+              <p className={styles.text}> Sign Up </p>
               <p className={styles.already}>
-                Already a member <Link>Log In</Link>
+                Already a member{" "}
+                <Link onClick={() => handleLogin()}>Log In</Link>
               </p>
             </div>
-            {/* {error ? (
+            {error ? (
               <p style={{ color: "red", textAlign: "center" }}>{error}</p>
-            ) : null} */}
+            ) : null}
             <form onSubmit={formik.handleSubmit} className={styles.formGroup}>
               <div className={styles.Emailform}>
                 <TextField
-                  className={styles.Emailform}
+                  className={styles.emailInput}
                   type="email"
                   name="email"
                   id="email"
                   label="Email"
                   variant="outlined"
-                  style={{ backgroundColor: "#d1d1d1" }}
+                  style={
+                    formik.errors.email && formik.touched.email
+                      ? {
+                          border: "2px solid rgb(255, 61, 61)",
+                          borderRadius: "10px",
+                          color: "rgb(255, 61, 61)",
+                        }
+                      : { backgroundColor: "#d1d1d1" }
+                  }
                   onChange={formik.handleChange}
                   value={formik.values.email}
                   onBlur={formik.handleBlur}
                 />
                 {formik.errors.email && formik.touched.email ? (
-                  <div>{formik.errors.email}</div>
+                  <div className={styles.error}>{formik.errors.email}</div>
                 ) : null}
               </div>
 
               <div className={styles.Usernameform}>
                 <TextField
-                  className={styles.Usernameform}
+                  className={styles.emailInput}
                   type="text"
                   name="name"
                   id="namee"
                   label="Username"
                   variant="outlined"
-                  style={{ backgroundColor: "#ffffff" }}
+                  style={
+                    formik.errors.name && formik.touched.name
+                      ? {
+                          border: "1px solid rgb(255, 61, 61)",
+                          borderRadius: "10px",
+                          color: "rgb(255, 61, 61)",
+                        }
+                      : { backgroundColor: "#d1d1d1" }
+                  }
                   onChange={formik.handleChange}
                   value={formik.values.name}
                   onBlur={formik.handleBlur}
                 />
-                {formik.errors.email && formik.touched.email ? (
-                  <div>{formik.errors.email}</div>
+                {formik.errors.name && formik.touched.name ? (
+                  <div className={styles.error}>{formik.errors.name}</div>
                 ) : null}
               </div>
               <div className={styles.PasswordForm}>
                 <TextField
-                  //   className={styles.PasswordForm}
-                  type={showpassword === true ? "text" : "password"}
+                  className={styles.passInput}
                   name="password"
                   id="password"
                   label="Password"
                   variant="outlined"
-                  style={{ backgroundColor: "#d1d1d1" }}
+                  style={
+                    formik.errors.password && formik.touched.password
+                      ? {
+                          border: "1px solid rgb(255, 61, 61)",
+                          borderRadius: "10px",
+                          color: "rgb(255, 61, 61)",
+                        }
+                      : { backgroundColor: "#d1d1d1" }
+                  }
                   onChange={formik.handleChange}
                   value={formik.values.password}
                   onBlur={formik.handleBlur}
                 />
-                {/* {formik.errors.password && formik.touched.password ? (
-                  <div>{formik.errors.password}</div>
-                ) : null} */}
+                {formik.errors.password && formik.touched.password ? (
+                  <div className={styles.error}>{formik.errors.password}</div>
+                ) : null}
               </div>
               <div className={styles.RewritePasswordForm}>
                 <TextField
-                  //   className={styles.Usernameform}
-                  type={showpassword === true ? "text" : "password"}
+                  className={styles.passInput}
                   name="reEnterPassword"
                   id="reEnterPassword"
-                  label="Password"
+                  label="Confirm Password"
                   variant="outlined"
-                  style={{ backgroundColor: "#d1d1d1" }}
+                  style={
+                    formik.errors.reEnterPassword &&
+                    formik.touched.reEnterPassword
+                      ? {
+                          border: "1px solid rgb(255, 61, 61)",
+                          borderRadius: "10px",
+                          color: "rgb(255, 61, 61)",
+                        }
+                      : { backgroundColor: "#d1d1d1" }
+                  }
                   onChange={formik.handleChange}
                   value={formik.values.reEnterPassword}
                   onBlur={formik.handleBlur}
                 />
-                {/* {formik.errors.password && formik.touched.password ? (
-                  <div>{formik.errors.password}</div>
-                ) : null} */}
+                {formik.errors.reEnterPassword &&
+                formik.touched.reEnterPassword ? (
+                  <div className={styles.error}>
+                    {formik.errors.reEnterPassword}
+                  </div>
+                ) : null}
               </div>
               <Button
                 disabled={!formik.isValid}

@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "./RestaurantDish.module.scss";
-import Navbar from "../../Layout/Navbar/Navbar";
-import item from "../../images/sandwich.png";
 import { CardMedia, Typography } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 import { connect } from "react-redux";
