@@ -1,7 +1,7 @@
 @import "../../SCSS/Mixins";
 .container {
   width: 100%;
-  height: fit-content;
+  height: auto;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
