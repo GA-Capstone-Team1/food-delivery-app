@@ -162,16 +162,18 @@ const Login = () => {
                   Show Password
                 </Typography>
               </div>
-              <Button
-                className={styles.button}
-                style={{ display: "block" }}
-                variant="contained"
-                color="primary"
-                type="submit"
-                disabled={!formik.isValid}
-              >
-                Log In
-              </Button>
+              <div className={styles.btnContainer}>
+                <Button
+                  className={styles.button}
+                  style={{ display: "block" }}
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  disabled={!formik.isValid}
+                >
+                  Log In
+                </Button>
+              </div>
             </form>
           </div>
         </div>

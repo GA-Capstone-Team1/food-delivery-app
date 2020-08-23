@@ -16,9 +16,10 @@ const LandingPage = ({ cityId, SelectedCity, authenticated, userName }) => {
   const handleSignup = () => {
     history.push("/signup");
   };
+
   let name;
-  if (authenticated === true) {
-    name = userName.split(" ")[0];
+  if (userName !== null || userName !== undefined) {
+    name = userName;
   }
 
   console.log(authenticated, userName);

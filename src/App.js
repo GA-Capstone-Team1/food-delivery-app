@@ -23,26 +23,26 @@ function App() {
   return (
     <div>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <Router>
-            <Switch>
-              <Route exact path="/login" component={Login}></Route>
-              <Route exact path="/signup" component={SignUp}></Route>
-              <Route exact path="/" component={LandingPage}></Route>
-              <Route exact path="/restaurants" component={Restaurants}></Route>4
-              <Route exact path="/cart" component={Cart}></Route>
-              <Route
-                exact
-                path="/restaurants/restaurant/:resId"
-                component={RestaurantDetails}
-              ></Route>
-              <ProtectedRoute
-                path="/checkout"
-                component={Checkout}
-              ></ProtectedRoute>
-            </Switch>
-          </Router>
-        </PersistGate>
+        {/* <PersistGate loading={null} persistor={persistor}> */}
+        <Router>
+          <Switch>
+            <Route exact path="/login" component={Login}></Route>
+            <Route exact path="/signup" component={SignUp}></Route>
+            <Route exact path="/" component={LandingPage}></Route>
+            <Route exact path="/restaurants" component={Restaurants}></Route>4
+            <Route exact path="/cart" component={Cart}></Route>
+            <Route
+              exact
+              path="/restaurants/restaurant/:resId"
+              component={RestaurantDetails}
+            ></Route>
+            <ProtectedRoute
+              path="/checkout"
+              component={Checkout}
+            ></ProtectedRoute>
+          </Switch>
+        </Router>
+        {/* </PersistGate> */}
       </Provider>
     </div>
   );
