@@ -74,7 +74,7 @@ const LandingPage = ({ cityId, SelectedCity, authenticated, userName }) => {
       <div className={styles.right}>
         <div className={styles.top}>
           {authenticated === true ? (
-            <Typography variant="subtitle1">
+            <Typography variant="subtitle1" className={styles.userName}>
               Welcome <strong>{name}</strong>{" "}
             </Typography>
           ) : (

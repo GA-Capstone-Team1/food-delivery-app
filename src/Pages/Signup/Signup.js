@@ -13,6 +13,7 @@ import {
   isAuthenticated,
 } from "../../Redux/Authentication/Actions";
 import { setloader } from "../../Redux/UIModals/Actions";
+import Loader from "../../Components/Loader/Loader";
 
 const SignUp = () => {
   const initialValues = {
@@ -24,6 +25,7 @@ const SignUp = () => {
 
   const history = useHistory();
   const error = useSelector((state) => state.auth.signupError);
+  const loader = useSelector((state) => state.ui.loader);
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
@@ -92,6 +94,7 @@ const SignUp = () => {
   return (
     <Fragment>
       <NavBar></NavBar>
+      <Loader></Loader>
       <div className={styles.container}>
         <div className={styles.signupPage}>
           <div className={styles.formContainer}>
@@ -223,6 +226,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      )
     </Fragment>
   );
 };
