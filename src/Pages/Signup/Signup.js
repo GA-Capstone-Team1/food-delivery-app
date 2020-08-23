@@ -13,6 +13,7 @@ import {
   isAuthenticated,
 } from "../../Redux/Authentication/Actions";
 import { setloader } from "../../Redux/UIModals/Actions";
+import Loader from "../../Components/Loader/Loader";
 
 const SignUp = () => {
   const initialValues = {
@@ -24,6 +25,7 @@ const SignUp = () => {
 
   const history = useHistory();
   const error = useSelector((state) => state.auth.signupError);
+  const loader = useSelector((state) => state.ui.loader);
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
@@ -45,10 +47,8 @@ const SignUp = () => {
     onSubmit,
     validationSchema,
   });
-  console.log("Visited Fields", formik.touched);
 
   const handleSubmit = ({ email, password, name }) => {
-    console.log("submitted");
     dispatch(setloader(true));
 
     firebase
@@ -59,13 +59,14 @@ const SignUp = () => {
         res.user.updateProfile({
           displayName: name,
         });
-        dispatch(
-          userDetails(res.user.email, res.user.uid, res.user.displayName)
-        );
+        console.log(res);
+        console.log(res.user.email, res.user.uid, res.user.displayName);
+
+        dispatch(userDetails(res.user.email, res.user.uid));
         dispatch(signupError(""));
         dispatch(setloader(false));
         dispatch(isAuthenticated(true));
-        history.replace("/");
+        history.replace("/login");
       })
       .catch((err) => {
         console.log(err);
@@ -90,10 +91,10 @@ const SignUp = () => {
   const handleLogin = () => {
     history.push("/login");
   };
-
   return (
     <Fragment>
       <NavBar></NavBar>
+      <Loader></Loader>
       <div className={styles.container}>
         <div className={styles.signupPage}>
           <div className={styles.formContainer}>
@@ -161,6 +162,7 @@ const SignUp = () => {
               </div>
               <div className={styles.PasswordForm}>
                 <TextField
+                  type="password"
                   className={styles.passInput}
                   name="password"
                   id="password"
@@ -185,6 +187,7 @@ const SignUp = () => {
               </div>
               <div className={styles.RewritePasswordForm}>
                 <TextField
+                  type="password"
                   className={styles.passInput}
                   name="reEnterPassword"
                   id="reEnterPassword"
@@ -223,6 +226,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      )
     </Fragment>
   );
 };

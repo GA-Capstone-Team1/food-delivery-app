@@ -80,13 +80,21 @@
     border-radius: 15px;
     right: 0;
     z-index: 5;
+
+    @include Desktop() {
+      display: none;
+    }
   }
   .verticalTabMob {
     position: fixed;
     bottom: 80px;
     right: 0;
     height: fit-content;
-    z-index: 8;
+    z-index: 12;
+
+    @include Desktop() {
+      display: none;
+    }
   }
   .verticalTab {
     display: none;

@@ -45,9 +45,6 @@ function RestaurantDish({ restaurantDetails }) {
           {restaurantDetails.timings}
         </Typography>
       </div>
-      <div className={styles.resoffer}>
-        <CardMedia className={styles.offer}></CardMedia>
-      </div>
     </>
   );
 }

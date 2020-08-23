@@ -6,7 +6,13 @@ import { searchDishes } from "../../Redux/Services/Actions";
 import data from "../../Services/DishesData.json";
 import { foodCart } from "../../Redux/Restaurant/Actions";
 
-let FoodItems = ({ searchDishes, foodMenus, selectedMenu, addtoCart }) => {
+let FoodItems = ({
+  searchDishes,
+  foodMenus,
+  selectedMenu,
+  addtoCart,
+  cartItems,
+}) => {
   const [menus, setMenus] = useState();
   let arr = Object.entries(data).filter(([key, value]) => {
     let val;
@@ -82,6 +88,7 @@ const mapStateToProps = (state) => {
   return {
     foodMenus: state.service.foodMenus,
     selectedMenu: state.restaurant.menu,
+    cartItems: state.restaurant.cartItems,
   };
 };
 

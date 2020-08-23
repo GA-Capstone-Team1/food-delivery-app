@@ -16,19 +16,17 @@
   flex-direction: column;
   margin: 15px;
   @include Desktop() {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: auto;
-    grid-template-areas: "LeftSide RightSide";
-    grid-gap: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
   }
 }
 .formGroup {
   @include Desktop() {
-    width: 80%;
+    max-width: 500px;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: left;
     margin: 0 auto;
   }
@@ -72,15 +70,13 @@
 }
 .formContainer {
   @include Desktop() {
-    grid-area: LeftSide;
+    width: fit-content;
     background-color: #fbfbfb;
     box-shadow: 0px 0px 15px rgb(170, 170, 170);
-
     height: fit-content;
-    width: auto;
-    padding: 20px 0px;
+    padding: 30px 50px;
     border-radius: 10px;
-    margin-top: 50px;
+    margin: 50px auto;
   }
 
   .text {
@@ -122,4 +118,8 @@
 
 .error {
   color: rgb(255, 61, 61);
+}
+
+.btnContainer {
+  width: 100%;
 }

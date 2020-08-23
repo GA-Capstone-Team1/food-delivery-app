@@ -42,7 +42,6 @@ function Navbar() {
 
   useEffect(() => {}, [userName]);
 
-  console.log(userName, authenticated);
   const handleSignIn = () => {
     history.push("/signup");
   };
@@ -67,8 +66,8 @@ function Navbar() {
   };
 
   let name;
-  if (authenticated === true) {
-    name = userName.split(" ")[0];
+  if (userName !== null || userName !== undefined) {
+    name = userName;
   }
 
   return (

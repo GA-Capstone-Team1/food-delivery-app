@@ -203,4 +203,8 @@
 
 .userName {
   color: #ffffff;
+
+  @include Desktop() {
+    color: #ffffff;
+  }
 }

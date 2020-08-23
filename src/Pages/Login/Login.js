@@ -13,6 +13,7 @@ import {
   isAuthenticated,
 } from "../../Redux/Authentication/Actions";
 import { setloader } from "../../Redux/UIModals/Actions";
+import Loader from "../../Components/Loader/Loader";
 
 const Login = () => {
   const [showpassword, setShowpassword] = useState(false);
@@ -84,6 +85,7 @@ const Login = () => {
   return (
     <Fragment>
       <NavBar></NavBar>
+      <Loader></Loader>
       <div className={styles.container}>
         <div className={styles.signupPage}>
           <div className={styles.formContainer}>
@@ -162,16 +164,18 @@ const Login = () => {
                   Show Password
                 </Typography>
               </div>
-              <Button
-                className={styles.button}
-                style={{ display: "block" }}
-                variant="contained"
-                color="primary"
-                type="submit"
-                disabled={!formik.isValid}
-              >
-                Log In
-              </Button>
+              <div className={styles.btnContainer}>
+                <Button
+                  className={styles.button}
+                  style={{ display: "block" }}
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  disabled={!formik.isValid}
+                >
+                  Log In
+                </Button>
+              </div>
             </form>
           </div>
         </div>
