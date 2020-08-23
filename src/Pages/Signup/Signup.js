@@ -25,7 +25,6 @@ const SignUp = () => {
 
   const history = useHistory();
   const error = useSelector((state) => state.auth.signupError);
-  const loader = useSelector((state) => state.ui.loader);
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
